@@ -1,23 +1,22 @@
-// MarkerViewModel.swift
-import SwiftUI
+import Foundation
 import MapKit
+import SwiftUI
 
-@MainActor
-final class MarkerViewModel: ObservableObject {
-    @Published private(set) var markers: [CollectionMarker] = []
-    @Published private(set) var filteredMarkers: [CollectionMarker] = []
-    @Published var selectedMarker: CollectionMarker?
+@Observable
+class MapViewModel {
+    var markers: [CollectionMarker] = []
+    var filteredMarkers: [CollectionMarker] = []
+    var selectedMarker: CollectionMarker?
     
+    @MainActor
     func fetchMarkers() async {
         do {
             let url = URL(string: "https://apiecolana.com/api/v1/collection_centers/custom_map?state_id=19&town_id=&section=map")!
             let (data, _) = try await URLSession.shared.data(from: url)
-            let markers = try JSONDecoder().decode([CollectionMarker].self, from: data)
-            self.markers = markers
-            self.filteredMarkers = markers
+            markers = try JSONDecoder().decode([CollectionMarker].self, from: data)
+            filteredMarkers = markers
         } catch {
-            print("Error fetching markers: \(error)")
-            // Handle error appropriately
+            print("Error: \(error.localizedDescription)")
         }
     }
     
