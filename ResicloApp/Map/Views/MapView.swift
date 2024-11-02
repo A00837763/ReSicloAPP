@@ -3,7 +3,7 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
-    @StateObject private var viewModel = MarkerViewModel()
+    @State private var vm = MapViewModel()
     @State private var searchText = ""
     @State private var showingSearchResults = false
     @State private var position: MapCameraPosition = .region(
@@ -14,8 +14,8 @@ struct MapView: View {
     )
     
     var filteredMarkers: [CollectionMarker] {
-        guard !searchText.isEmpty else { return viewModel.filteredMarkers }
-        return viewModel.filteredMarkers.filter {
+        guard !searchText.isEmpty else { return vm.filteredMarkers }
+        return vm.filteredMarkers.filter {
             $0.name.localizedCaseInsensitiveContains(searchText)
         }
     }
@@ -30,19 +30,19 @@ struct MapView: View {
             .onChange(of: searchText) { _, _ in
                 showingSearchResults = true
             }
-            .sheet(item: $viewModel.selectedMarker) { marker in
+            .sheet(item: $vm.selectedMarker) { marker in
                 MarkerDetailView(marker: marker)
                     .presentationDetents([.height(400)])
             }
             .task {
-                await viewModel.fetchMarkers()
+                await vm.fetchMarkers()
             }
         }
     }
     
     private var mapLayer: some View {
         Map(position: $position) {
-            ForEach(viewModel.filteredMarkers) { marker in
+            ForEach(vm.filteredMarkers) { marker in
                 Annotation(marker.name, coordinate: marker.coordinate) {
                     RecyclingMarker {
                         selectMarker(marker)
@@ -83,7 +83,7 @@ struct MapView: View {
                 center: adjustedCoordinate,
                 span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
             ))
-            viewModel.selectedMarker = marker
+            vm.selectedMarker = marker
         }
     }
 }
