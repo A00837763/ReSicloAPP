@@ -9,6 +9,8 @@ struct MainTabView: View {
             span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         )
     )
+    
+    private let locationManager = LocationManager()
 
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -24,7 +26,7 @@ struct MainTabView: View {
                 }
                 .tag(1)
             
-            MapView()
+            MapView(locationManager: locationManager)
                 .tabItem {
                     Label("Map", systemImage: "map")
                 }
