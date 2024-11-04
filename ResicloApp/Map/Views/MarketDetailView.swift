@@ -1,4 +1,3 @@
-// MarkerDetailView.swift
 import SwiftUI
 import MapKit
 
