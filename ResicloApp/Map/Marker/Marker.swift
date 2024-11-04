@@ -2,7 +2,7 @@ import SwiftUI
 import MapKit
 
 //Estructura de Ubicación de Centro de Reciclaje
-struct CollectionMarker: Identifiable, Codable, Equatable {
+struct CollectionMarker: Identifiable, Codable, Equatable, Hashable {
     let id: Int //id único del centro
     let name: String //Nombre del Centro
     let lng: Double //Longitud

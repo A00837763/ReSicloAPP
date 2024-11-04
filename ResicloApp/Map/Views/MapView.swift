@@ -40,28 +40,30 @@ struct MapView: View {
             }
         }
     }
-
+    
     private var mapLayer: some View {
-        Map(position: $position) {
+        Map(position: $position, selection: $vm.selectedMarker) {
             ForEach(vm.filteredMarkers) { marker in
-                Annotation(marker.name, coordinate: marker.coordinate) {
-                    RecyclingMarker {
-                        selectMarker(marker)
-                    }
-                }
+                Marker(marker.name, systemImage: "leaf.circle.fill", coordinate: marker.coordinate)
+                    .tint(.resicloGreen1)
+                    .annotationTitles(.hidden)
+                    .tag(marker)
             }
-            // Show user's location on the map
+            
             if let userLocation = locationManager.currentLocation {
                 Annotation("Your Location", coordinate: userLocation) {
                     Image(systemName: "location.circle.fill")
                         .foregroundColor(.blue)
                         .font(.title)
-
                 }
             }
         }
         .mapStyle(.standard)
-
+        .onChange(of: vm.selectedMarker) { oldValue, newValue in
+            if let marker = newValue {
+                selectMarker(marker)
+            }
+        }
     }
 
     @ViewBuilder
@@ -80,6 +82,7 @@ struct MapView: View {
             .padding(.horizontal)
             .padding(.top)
             .transition(.searchResults)
+            .tint(.resicloGreen1)
         }
     }
 
@@ -99,7 +102,6 @@ struct MapView: View {
     }
 }
 
-// Usage in preview or parent view
 #Preview {
     MapView(locationManager: LocationManager())
 }
