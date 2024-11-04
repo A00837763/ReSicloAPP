@@ -1,4 +1,3 @@
-// MapView.swift
 import SwiftUI
 import MapKit
 
@@ -13,13 +12,15 @@ struct MapView: View {
         )
     )
     
+    var locationManager: LocationManager
+
     var filteredMarkers: [CollectionMarker] {
         guard !searchText.isEmpty else { return vm.filteredMarkers }
         return vm.filteredMarkers.filter {
             $0.name.localizedCaseInsensitiveContains(searchText)
         }
     }
-    
+
     var body: some View {
         NavigationStack {
             ZStack(alignment: .top) {
@@ -27,7 +28,6 @@ struct MapView: View {
                 searchResultsLayer
             }
             .searchable(text: $searchText, prompt: "Buscar centros de reciclaje")
-            .tint(.resicloGreen1)
             .onChange(of: searchText) { _, _ in
                 showingSearchResults = true
             }
@@ -40,7 +40,7 @@ struct MapView: View {
             }
         }
     }
-    
+
     private var mapLayer: some View {
         Map(position: $position) {
             ForEach(vm.filteredMarkers) { marker in
@@ -50,34 +50,46 @@ struct MapView: View {
                     }
                 }
             }
+            // Show user's location on the map
+            if let userLocation = locationManager.currentLocation {
+                Annotation("Your Location", coordinate: userLocation) {
+                    Image(systemName: "location.circle.fill")
+                        .foregroundColor(.blue)
+                        .font(.title)
+
+                }
+            }
         }
         .mapStyle(.standard)
+
     }
-    
+
+    @ViewBuilder
     private var searchResultsLayer: some View {
-        ((!searchText.isEmpty && showingSearchResults) ? SearchResultsView(
-            markers: filteredMarkers,
-            searchText: $searchText,
-            showingResults: $showingSearchResults
-        ) { marker in
-            selectMarker(marker)
-            searchText = ""
-            showingSearchResults = false
+        if !searchText.isEmpty && showingSearchResults {
+            SearchResultsView(
+                markers: filteredMarkers,
+                searchText: $searchText,
+                showingResults: $showingSearchResults
+            ) { marker in
+                selectMarker(marker)
+                searchText = ""
+                showingSearchResults = false
+            }
+            .frame(maxWidth: .infinity, maxHeight: 300)
+            .padding(.horizontal)
+            .padding(.top)
+            .transition(.searchResults)
         }
-        .frame(maxWidth: .infinity, maxHeight: 300)
-        .padding(.horizontal)
-        .padding(.top)
-        .transition(.searchResults) : nil)
-        .opacity((!searchText.isEmpty && showingSearchResults) ? 1 : 0)
     }
-    
+
     private func selectMarker(_ marker: CollectionMarker) {
         withAnimation(.easeInOut) {
             let adjustedCoordinate = CLLocationCoordinate2D(
                 latitude: marker.coordinate.latitude - 0.0003,
                 longitude: marker.coordinate.longitude
             )
-            
+
             position = .region(MKCoordinateRegion(
                 center: adjustedCoordinate,
                 span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
@@ -87,6 +99,10 @@ struct MapView: View {
     }
 }
 
+// Usage in preview or parent view
 #Preview {
-    MapView()
+    MapView(locationManager: LocationManager())
 }
+
+
+
