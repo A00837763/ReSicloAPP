@@ -53,13 +53,15 @@ struct MapView: View {
             // Show user's location on the map
             if let userLocation = locationManager.currentLocation {
                 Annotation("Your Location", coordinate: userLocation) {
-                    Image(systemName: "location.fill")
+                    Image(systemName: "location.circle.fill")
                         .foregroundColor(.blue)
                         .font(.title)
+
                 }
             }
         }
         .mapStyle(.standard)
+
     }
 
     @ViewBuilder
