@@ -22,9 +22,22 @@
 		DEBE37682CC07AB200B2E3E5 /* ResicloApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResicloApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		DE4E0F422CDC1FE300880A2B /* Exceptions for "ResicloApp" folder in "ResicloApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = DEBE37672CC07AB200B2E3E5 /* ResicloApp */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		DEBE376A2CC07AB200B2E3E5 /* ResicloApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				DE4E0F422CDC1FE300880A2B /* Exceptions for "ResicloApp" folder in "ResicloApp" target */,
+			);
 			path = ResicloApp;
 			sourceTree = "<group>";
 		};
