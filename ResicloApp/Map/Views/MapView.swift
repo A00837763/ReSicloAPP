@@ -4,6 +4,10 @@ import MapKit
 struct MapView: View {
     @State private var vm = MapViewModel()
     @State private var searchText = ""
+    @State private var currentSpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
+    @State private var isPresented = false
+
+
     @State private var showingSearchResults = false
     @State private var position: MapCameraPosition = .region(
         MKCoordinateRegion(
@@ -31,12 +35,25 @@ struct MapView: View {
             .onChange(of: searchText) { _, _ in
                 showingSearchResults = true
             }
-            .sheet(item: $vm.selectedMarker) { marker in
-                MarkerDetailView(marker: marker)
-                    .presentationDetents([.height(400)])
+            .sheet(isPresented: $isPresented, onDismiss: {
+                vm.selectedMarker = nil
+            }) {
+                if let marker = vm.selectedMarker {
+                    MarkerDetailView(marker: marker)
+                }
             }
             .task {
                 await vm.fetchMarkers()
+            }
+            .onAppear(){
+                if let userLocation = locationManager.currentLocation {
+                    position = .region(
+                        MKCoordinateRegion(
+                            center: userLocation,
+                            span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
+                        )
+                    )
+                }
             }
         }
     }
@@ -52,16 +69,32 @@ struct MapView: View {
             
             if let userLocation = locationManager.currentLocation {
                 Annotation("Your Location", coordinate: userLocation) {
-                    Image(systemName: "location.circle.fill")
-                        .foregroundColor(.blue)
-                        .font(.title)
+                    Image(systemName: "person.circle.fill")
+                        .foregroundStyle(.blue)
+                        .background(.white)
+                        .clipShape(Circle())
                 }
             }
         }
         .mapStyle(.standard)
+        .mapControls(){
+            MapUserLocationButton()
+        }
+        .onMapCameraChange { context in
+            currentSpan = context.region.span
+
+        }
+        .onChange(of: vm.selectedMarker) {
+            isPresented = vm.selectedMarker != nil
+        }
         .onChange(of: vm.selectedMarker) { oldValue, newValue in
             if let marker = newValue {
-                selectMarker(marker)
+                withAnimation(.easeInOut) {
+                    position = .region(MKCoordinateRegion(
+                        center: marker.coordinate,
+                        span: currentSpan
+                    ))
+                }
             }
         }
     }
@@ -95,7 +128,7 @@ struct MapView: View {
 
             position = .region(MKCoordinateRegion(
                 center: adjustedCoordinate,
-                span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
+                span: currentSpan
             ))
             vm.selectedMarker = marker
         }
