@@ -1,0 +1,33 @@
+# Xcode
+*.xcworkspace
+*.xcuserdata
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/xcshareddata/.*
+
+# Swift Package Manager
+.build/
+Package.resolved
+
+# CocoaPods
+/Pods/
+
+# Carthage
+/Carthage/Build/
+
+# Derived data
+/DerivedData/
+
+# Archives
+*.xcarchive
+
+# Fastlane
+/fastlane/report.xml
+/fastlane/Preview.html
+/fastlane/screenshots/
+/fastlane/test_output/
+
+# Personal settings
+.DS_Store
+*.swp
