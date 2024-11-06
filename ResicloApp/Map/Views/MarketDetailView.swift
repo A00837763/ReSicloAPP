@@ -2,19 +2,44 @@ import SwiftUI
 import MapKit
 
 struct MarkerDetailView: View {
-    let marker: CollectionMarker
     @Environment(\.dismiss) private var dismiss
+    var marker: CollectionMarker
+    @State private var sheetHeight: PresentationDetent = .height(200)
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
+            Rectangle()
+                .fill(Color.gray.opacity(0.3))
+                .frame(width: 36, height: 5)
+                .clipShape(Capsule())
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.top, 8)
+            
             headerView
-            materialsView
-            scheduleView
-            addressView
-            Spacer()
+                .padding(.horizontal)
+            
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    materialsView
+                    scheduleView
+                    addressView
+                }
+                .padding(.horizontal)
+            }
+            
+            // Button stays fixed at bottom
             directionsButton
+                .padding()
+                .background(Material.regular) // Adds blur when scrolling
         }
-        .padding()
+        .presentationDetents([.height(200), .medium, .large], selection: $sheetHeight)
+        .onAppear {
+            sheetHeight = .height(200) // Reset sheet height when view appears
+        }
+        .presentationDragIndicator(.visible)
+        .presentationBackgroundInteraction(.enabled(upThrough: .medium)) 
+        .presentationBackground(.regularMaterial)
+        .presentationCornerRadius(12)
     }
     
     private var headerView: some View {
@@ -33,7 +58,7 @@ struct MarkerDetailView: View {
             
             Button(action: { dismiss() }) {
                 Image(systemName: "xmark.circle.fill")
-                    .foregroundStyle(.gray)
+                    .foregroundStyle(Color.gray)
             }
         }
     }
@@ -79,7 +104,7 @@ struct MarkerDetailView: View {
             Label("Get Directions", systemImage: "map.fill")
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(.resicloGreen1)
+                .background(Color.resicloGreen1)
                 .foregroundColor(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
         }
