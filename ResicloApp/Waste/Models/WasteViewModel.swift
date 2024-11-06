@@ -1,38 +1,30 @@
-//
-//  WasteViewModel.swift
-//  ResicloApp
-//
-//  Created by Hugo Ochoa  on 05/11/24.
-//
-
-
-//
-//  WasteViewModel.swift
-//  ResicloApp
-//
-//  Created by Hugo Ochoa  on 05/11/24.
-//
-
-
 import Foundation
 
 @Observable
-class WasteViewModel {
-    var wastes: [Waste] = []
+class ModelData {
+    var wastes: [Waste] = load("wasteData.json")
+}
 
-    @MainActor
-    func fetchWastes() async {
-        let url = URL(string: "https://apiecolana.com/api/v1/wastes")!
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let apiResponse = try JSONDecoder().decode(WasteApiResponse.self, from: data)
-            wastes = apiResponse.data
-        } catch {
-            print("Error fetching wastes: \(error)")
-        }
+func load<T: Decodable>(_ filename: String) -> T {
+    let data: Data
+
+    guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
+    else {
+        fatalError("Couldn't find \(filename) in main bundle.")
+    }
+
+    do {
+        data = try Data(contentsOf: file)
+    } catch {
+        fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
+    }
+
+    do {
+        let decoder = JSONDecoder()
+        return try decoder.decode(T.self, from: data)
+    } catch {
+        fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
     }
 }
 
-struct WasteApiResponse: Codable {
-    let data: [Waste]
-}
+

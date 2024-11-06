@@ -5,41 +5,41 @@
 //  Created by Hugo Ochoa  on 05/11/24.
 //
 
-
-//
-//  WasteListView.swift
-//  ResicloApp
-//
-//  Created by Hugo Ochoa  on 05/11/24.
-//
-
 import SwiftUI
 
-struct WasteListView: View {
-    @State private var viewModel = WasteViewModel()
-    
+struct WasteList: View {
+    @Environment(ModelData.self) private var modelData
+    @State private var showFavoritesOnly = false
+
+    var filteredWastes: [Waste] {
+        modelData.wastes.filter { waste in
+            (!showFavoritesOnly || waste.isFavorite)
+        }
+    }
+
     var body: some View {
         NavigationView {
-            List(viewModel.wastes) { waste in
-                VStack(alignment: .leading) {
-                    Text(waste.name ?? "Unnamed Waste")
-                        .font(.headline)
-                    if let description = waste.description {
-                        Text(description)
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
+            List {
+                Toggle(isOn: $showFavoritesOnly) {
+                    Text("Solo favoritos")
+                }
+
+                ForEach(filteredWastes) { waste in
+                    NavigationLink {
+                        WasteDetail(waste: waste)
+                    } label: {
+                        WasteRow(waste: waste)
                     }
                 }
-                .padding(.vertical, 4)
             }
-            .navigationTitle("Waste Types")
-            .task {
-                await viewModel.fetchWastes()
-            }
+            .navigationTitle("Tipos de desechos")
         }
     }
 }
 
 #Preview {
-    WasteListView()
+    WasteList().environment(ModelData())
 }
+
+
+

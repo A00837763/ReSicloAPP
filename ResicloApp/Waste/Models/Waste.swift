@@ -1,29 +1,16 @@
-//
-//  Waste.swift
-//  ResicloApp
-//
-//  Created by Hugo Ochoa  on 05/11/24.
-//
-
-
-//
-//  Waste.swift
-//  ResicloApp
-//
-//  Created by Hugo Ochoa  on 05/11/24.
-//
-
 import Foundation
+import SwiftUI
 
 struct Waste: Identifiable, Codable {
     let id: String
-    let attributes: WasteAttributes
-    
-    var name: String? { attributes.name } // Extract 'name' and 'description' for convenience
-    var description: String? { attributes.description }
+    let name: String
+    let description: String
+    var isFavorite: Bool
+    let process: String
+    let image: String
+    var assetImage: Image {
+        Image(image)
+    }
 }
 
-struct WasteAttributes: Codable {
-    let name: String?
-    let description: String?
-}
+
