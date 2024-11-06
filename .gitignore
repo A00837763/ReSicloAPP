@@ -31,3 +31,7 @@ Package.resolved
 # Personal settings
 .DS_Store
 *.swp
+
+# Xcode user interface state
+*.xcuserstate
+*.xcuserdata
