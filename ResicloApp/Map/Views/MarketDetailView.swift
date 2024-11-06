@@ -81,7 +81,6 @@ struct MarkerDetailView: View {
         .presentationDetents([.height(200), .medium, .large], selection: $sheetHeight)
         .onAppear {
             sheetHeight = .height(200)
-            vm.printMarkerDetails(for: marker.id)
         }
         .presentationDragIndicator(.visible)
         .presentationBackgroundInteraction(.enabled(upThrough: .medium))
