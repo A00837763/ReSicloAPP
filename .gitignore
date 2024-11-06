@@ -35,3 +35,7 @@ Package.resolved
 # Xcode user interface state
 *.xcuserstate
 *.xcuserdata
+.DS_Store
+ResicloApp.xcodeproj/project.pbxproj
+ResicloApp.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
+.DS_Store
