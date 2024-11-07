@@ -1,23 +1,21 @@
-// En primer lugar, asegúrate de tener estos imports
 import GoogleSignIn
 import FirebaseAuth
 import Firebase
+import SwiftUI // Asegúrate de importar SwiftUI para UIHostingController
 
 class AuthenticationManager {
     static let shared = AuthenticationManager()
     
     func configurarGoogle() {
-        // Configura Firebase (añade esto en tu AppDelegate)
+        // Configura Firebase (asegúrate de llamar a este método en AppDelegate)
         FirebaseApp.configure()
     }
     
-    func iniciarSesionConGoogle(desde viewController: UIViewController, completion: @escaping (Result<User, Error>) -> Void) {
-        // Configura el cliente de Google con tu ID de cliente
+    func iniciarSesionConGoogle(desde viewController: UIViewController, completion: @escaping (Result<(User, URL?), Error>) -> Void) {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
         let config = GIDConfiguration(clientID: clientID)
         GIDSignIn.sharedInstance.configuration = config
         
-        // Inicia el proceso de inicio de sesión
         GIDSignIn.sharedInstance.signIn(withPresenting: viewController) { [weak self] result, error in
             if let error = error {
                 completion(.failure(error))
@@ -31,11 +29,8 @@ class AuthenticationManager {
                 return
             }
             
-            // Crear credencial para Firebase
-            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
-                                                         accessToken: user.accessToken.tokenString)
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: user.accessToken.tokenString)
             
-            // Autenticar con Firebase
             Auth.auth().signIn(with: credential) { result, error in
                 if let error = error {
                     completion(.failure(error))
@@ -43,7 +38,8 @@ class AuthenticationManager {
                 }
                 
                 if let user = result?.user {
-                    completion(.success(user))
+                    let photoURL = user.photoURL
+                    completion(.success((user, photoURL)))
                 }
             }
         }
@@ -61,10 +57,9 @@ class LoginViewController: UIViewController {
     @IBAction func googleSignInTapped(_ sender: UIButton) {
         AuthenticationManager.shared.iniciarSesionConGoogle(desde: self) { result in
             switch result {
-            case .success(let user):
+            case .success(let (user, photoURL)):
                 print("Usuario autenticado: \(user.uid)")
-                // Navegar a la siguiente pantalla
-                self.navegarAPantallaPrincipal()
+                print("URL de la imagen de perfil: \(String(describing: photoURL))")
             case .failure(let error):
                 print("Error en autenticación: \(error.localizedDescription)")
                 self.mostrarError(error)
@@ -82,7 +77,5 @@ class LoginViewController: UIViewController {
         present(alert, animated: true)
     }
     
-    private func navegarAPantallaPrincipal() {
-        // Implementa la navegación a tu pantalla principal
-    }
+    
 }

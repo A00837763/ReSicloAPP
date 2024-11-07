@@ -6,65 +6,53 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct ProfileView: View {
-    @State private var profileImage: Image? = Image("placeholder") // Imagen de perfil
-    @State private var name: String = "Diego Esparza"
-    @State private var email: String = "diego@example.com"
+    let profileImageURL: URL?
     
     var body: some View {
         VStack {
-            profileImage?
-                .resizable()
-                .frame(width: 100, height: 100)
-                .clipShape(Circle())
-                .overlay(Circle().stroke(Color.resicloGreen1, lineWidth: 2))
-                .shadow(radius: 5)
-                .padding(.top, 20)
-                .onTapGesture {
-                    selectImage()
+            if let profileImageURL = profileImageURL {
+                // Cargar la imagen de perfil con AsyncImage (iOS 15+)
+                AsyncImage(url: profileImageURL) { phase in
+                    switch phase {
+                    case .empty:
+                        ProgressView() // Muestra un spinner mientras carga
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 150, height: 150)
+                            .clipShape(Circle())
+                            .shadow(radius: 10)
+                    case .failure:
+                        Image(systemName: "person.crop.circle.badge.exclamationmark")
+                            .resizable()
+                            .frame(width: 150, height: 150)
+                            .foregroundColor(.gray)
+                    @unknown default:
+                        EmptyView()
+                    }
                 }
-            
-            Text(name)
-                .font(.title)
-                .fontWeight(.bold)
-                .padding(.top, 10)
-            
-            Text(email)
-                .font(.subheadline)
-                .foregroundColor(.gray)
-                .padding(.top, 5)
-            
-            Spacer()
-            
-            Button(action: {
-                editProfile()
-            }) {
-                Text("Editar Perfil")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(width: 200, height: 50)
-                    .background(Color.resicloGreen1)
-                    .cornerRadius(10)
+            } else {
+                // Imagen de placeholder si no hay foto de perfil
+                Image(systemName: "person.crop.circle")
+                    .resizable()
+                    .frame(width: 150, height: 150)
+                    .foregroundColor(.gray)
             }
-            .padding(.bottom, 20)
-            .foregroundStyle(.resicloGreen1)
+            
+            Text("Bienvenido a tu perfil")
+                .font(.title)
+                .padding(.top, 20)
         }
         .padding()
-    }
-    
-    func selectImage() {
-        // Lógica para seleccionar la imagen
-    }
-    
-    func editProfile() {
-        // Lógica para editar el perfil
     }
 }
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
+        ProfileView(profileImageURL: nil) // Puedes poner una URL de prueba aquí
     }
 }

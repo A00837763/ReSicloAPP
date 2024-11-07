@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		430B88792CDD411A0070C0EA /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 430B88782CDD411A0070C0EA /* SDWebImageSwiftUI */; };
 		DE4E0EEE2CDC1CEE00880A2B /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = DE4E0EED2CDC1CEE00880A2B /* GoogleSignIn */; };
 		DE4E0EF02CDC1CEE00880A2B /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DE4E0EEF2CDC1CEE00880A2B /* GoogleSignInSwift */; };
 		DE4E0EF32CDC1D6500880A2B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = DE4E0EF22CDC1D6500880A2B /* FirebaseAnalytics */; };
@@ -48,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				430B88792CDD411A0070C0EA /* SDWebImageSwiftUI in Frameworks */,
 				DE4E0EFD2CDC1D6500880A2B /* FirebaseMessaging in Frameworks */,
 				DE4E0EF92CDC1D6500880A2B /* FirebaseDatabase in Frameworks */,
 				DE4E0EFF2CDC1D6500880A2B /* FirebaseStorage in Frameworks */,
@@ -108,6 +110,7 @@
 				DE4E0EFA2CDC1D6500880A2B /* FirebaseFirestore */,
 				DE4E0EFC2CDC1D6500880A2B /* FirebaseMessaging */,
 				DE4E0EFE2CDC1D6500880A2B /* FirebaseStorage */,
+				430B88782CDD411A0070C0EA /* SDWebImageSwiftUI */,
 			);
 			productName = ResicloApp;
 			productReference = DEBE37682CC07AB200B2E3E5 /* ResicloApp.app */;
@@ -140,6 +143,7 @@
 			packageReferences = (
 				DE4E0EEC2CDC1CEE00880A2B /* XCRemoteSwiftPackageReference "GoogleSignIn-ios" */,
 				DE4E0EF12CDC1D6500880A2B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				430B88772CDD411A0070C0EA /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = DEBE37692CC07AB200B2E3E5 /* Products */;
@@ -298,10 +302,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ResicloApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "ResicloApp/Preview\\ Content";
 				DEVELOPMENT_TEAM = YQ99SU827F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ResicloApp/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to show nearby recycling centers.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show nearby recycling centers.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -329,10 +334,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ResicloApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "ResicloApp/Preview\\ Content";
 				DEVELOPMENT_TEAM = YQ99SU827F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ResicloApp/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to show nearby recycling centers.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show nearby recycling centers.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -377,6 +383,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		430B88772CDD411A0070C0EA /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.3;
+			};
+		};
 		DE4E0EEC2CDC1CEE00880A2B /* XCRemoteSwiftPackageReference "GoogleSignIn-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-ios";
@@ -396,6 +410,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		430B88782CDD411A0070C0EA /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 430B88772CDD411A0070C0EA /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
 		DE4E0EED2CDC1CEE00880A2B /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DE4E0EEC2CDC1CEE00880A2B /* XCRemoteSwiftPackageReference "GoogleSignIn-ios" */;

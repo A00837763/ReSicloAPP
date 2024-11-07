@@ -1,9 +1,15 @@
 import SwiftUI
+import FirebaseAuth
 
 struct HeaderView: View {
     let userName: String
     @Environment(\.presentationMode) var presentationMode
     @State private var showProfileView = false
+
+    // Propiedad calculada para obtener la URL de la foto de perfil del usuario actual
+    private var profileImageURL: URL? {
+        Auth.auth().currentUser?.photoURL
+    }
 
     var body: some View {
         HStack {
@@ -25,9 +31,8 @@ struct HeaderView: View {
         }
         .foregroundStyle(.resicloGreen2)
         .sheet(isPresented: $showProfileView) {
-            ProfileView()
+            // Pasamos la URL de la foto de perfil a ProfileView
+            ProfileView(profileImageURL: profileImageURL)
         }
     }
 }
-
-
