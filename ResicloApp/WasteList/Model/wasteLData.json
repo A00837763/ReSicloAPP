@@ -9,7 +9,7 @@
     },
     {
         "id": "8",
-        "name": "Aceite Vegetal Usado",
+        "name": "Aceite vegetal usado",
         "description": "El aceite utilizado para cocinar, que al desecharse puede contaminar el agua si se tira al drenaje.",
         "isFavorite": false,
         "process": "Recolectar en puntos de reciclaje especializados.",
@@ -17,7 +17,7 @@
     },
     {
         "id": "56",
-        "name": "Acero Inoxidable",
+        "name": "Acero inoxidable",
         "description": "Material metálico resistente a la corrosión y ampliamente utilizado en utensilios de cocina.",
         "isFavorite": false,
         "process": "Reciclable en la mayoría de plantas de reciclaje de metales.",
@@ -65,7 +65,7 @@
     },
     {
         "id": "25",
-        "name": "Bolsas de Plástico",
+        "name": "Bolsas de plástico",
         "description": "Las bolsas que se reciclan generalmente están hechas de plástico. Tipos: BOLSA #2 HDPE: Hace ruido, es opaca y estira, utilizada en bolsas del supermercado. BOLSA #4 LDPE: Flexibles, suaves al tacto, común en bolsas de pan. BOLSA #5 BOPP: Transparentes o metalizadas, usadas en empaque de botanas.",
         "isFavorite": false,
         "process": "Depositar en centros de reciclaje adecuados para cada tipo de bolsa.",
@@ -206,5 +206,373 @@
         "isFavorite": false,
         "process": "Puedes llevar los empaques a centros especializados.",
         "icon": "https://cdn.ecolana.com.mx/iosnhpj5sag81hjyo5yjp2ss592q?response-content-disposition=inline%3B%20filename%3D%22DERMOCOSMETICO.png%22%3B%20filename%2A%3DUTF-8%27%27DERMOCOSMETICO.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T222302Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=0e228549c3b6a0e913827f51f82e776b67fc0d590cfaa49984954b6e65012e5e"
+    },
+    {
+        "id": "77",
+        "name": "Disco de vinilo",
+        "description": "El disco de vinilo es un formato de almacenamiento de audio hecho de PVC, usado principalmente para música, con una característica calidad sonora.",
+        "isFavorite": false,
+        "process": "Los discos de vinilo pueden llevarse a centros de reciclaje especializados en PVC o reutilizarse para crear artículos decorativos o de arte.",
+        "icon": "https://cdn.ecolana.com.mx/5ubpn3poegp4034av42fvj2ib7vh?response-content-disposition=inline%3B%20filename%3D%22Electronicos.png%22%3B%20filename%2A%3DUTF-8%27%27Electronicos.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T222302Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=eee8b732b5092fd6f2d39b81ffe869e8e769e2f0b4189012d4208f65f529b4f6"
+    },
+    {
+        "id": "6",
+        "name": "Electrónicos",
+        "description": "Son todos los materiales que tienen circuitos electrónicos.",
+        "isFavorite": false,
+        "process": "Llévalos a centros de reciclaje de electrónicos, donde los desmantelan para extraer materiales reciclables, o busca programas de reciclaje de fabricantes.",
+        "icon": "https://cdn.ecolana.com.mx/5ubpn3poegp4034av42fvj2ib7vh?response-content-disposition=inline%3B%20filename%3D%22Electronicos.png%22%3B%20filename%2A%3DUTF-8%27%27Electronicos.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T222302Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=eee8b732b5092fd6f2d39b81ffe869e8e769e2f0b4189012d4208f65f529b4f6"
+    },
+    {
+        "id": "73",
+        "name": "Empaques de Alimento para Mascotas",
+        "description": "Estas bolsas de plástico, así como los sobres pequeños de la marca, serán recuperadas por Purina®. En el caso de otros empaques de alimento para mascotas se debe verificar que su composición sea PE/PP. Si no vienen marcados no podemos asegurar su reciclabilidad.",
+        "isFavorite": false,
+        "process": "Llévalos a centros de reciclaje que acepten empaques flexibles o programas especializados en reciclaje de alimentos para mascotas.",
+        "icon": "https://cdn.ecolana.com.mx/4t6kal82ivag0zecsqeoiyfe89x1?response-content-disposition=inline%3B%20filename%3D%22alimentoPerros.png%22%3B%20filename%2A%3DUTF-8%27%27alimentoPerros.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T222302Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=b181b50969c8803608dec4968cfe54e87673438116369638a9816c998efe5e45"
+    },
+    {
+        "id": "10",
+        "name": "Envases de Productos de Belleza",
+        "description": "Estas bolsas de plástico, así como los sobres pequeños de la marca, serán recuperadas por Purina®. En el caso de otros empaques de alimento para mascotas se debe verificar que su composición sea PE/PP. Si no vienen marcados no podemos asegurar su reciclabilidad.",
+        "isFavorite": false,
+        "process": "Lleva los envases limpios a puntos de reciclaje que acepten productos de belleza, o participa en programas específicos de las marcas.",
+        "icon": null
+    },
+    {
+        "id": "81",
+        "name": "Envases de productos SVR",
+        "description": "Envases de plástico o vidrio utilizados para productos de la marca SVR.",
+        "isFavorite": false,
+        "process": "Verifica si SVR ofrece un programa de reciclaje de envases; si no, deposítalos en centros que acepten reciclaje de cosméticos.",
+        "icon": null
+    },
+    {
+        "id": "86",
+        "name": "Flexible PE/PP",
+        "description": "Material plástico flexible de polietileno o polipropileno, común en empaques y bolsas. Visualmente parecidas a los flexibles de tipo LDPE, pero vienen acompañadas con el número 7. Son flexibles y suaves al tacto.",
+        "isFavorite": false,
+        "process": "Lleva estos flexibles a centros de reciclaje especializados en plásticos PE o PP.",
+        "icon": "https://cdn.ecolana.com.mx/a7itdsmkl2q7rhr5sopzsqlbahvk?response-content-disposition=inline%3B%20filename%3D%22RESIDUO_WEB_PE_PP_FLEXIBLE_SF_CON_OJOS.png%22%3B%20filename%2A%3DUTF-8%27%27RESIDUO_WEB_PE_PP_FLEXIBLE_SF_CON_OJOS.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T222302Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=0b7ac7d09a6262da84da2363d4c49918e5eec987078e2de3ff575a93504bdfb9"
+    },
+    {
+        "id": "47",
+        "name": "Flexibles LDPE (Plástico No. 4)",
+        "description": "Plástico de baja densidad utilizado en bolsas y envolturas flexibles.",
+        "isFavorite": false,
+        "process": "Recíclalos en puntos de acopio que acepten plástico No. 4, como algunos supermercados.",
+        "icon": null
+    },
+    {
+        "id": "34",
+        "name": "Focos",
+        "description": "Dispositivos de iluminación que contienen vidrio, metal y a veces mercurio.",
+        "isFavorite": false,
+        "process": "Llévalos a puntos de reciclaje de electrónicos o programas de reciclaje de focos.",
+        "icon": "https://cdn.ecolana.com.mx/4zvdhd1h0ypvsc2kri9ag0bdm36t?response-content-disposition=inline%3B%20filename%3D%22Focos.png%22%3B%20filename%2A%3DUTF-8%27%27Focos.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T222302Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=7c4c15a9eee3390afd8710bd758f0d17020015055e7fcb49316f70752b2c4b13"
+    },
+    {
+        "id": "19",
+        "name": "HDPE",
+        "description": "Polietileno de alta densidad, usado en envases rígidos como botellas de leche o detergente.",
+        "isFavorite": false,
+        "process": "Lleva envases de HDPE a centros de reciclaje que acepten plástico No. 2.",
+        "icon": "https://cdn.ecolana.com.mx/7t949nteulle2bjhetdv1fbqxxv0?response-content-disposition=inline%3B%20filename%3D%22HDPE.png%22%3B%20filename%2A%3DUTF-8%27%27HDPE.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T222302Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=e0d8f54502343c9593151dd1e4a1f78b614e929e1af19440398ce7763d65474f"
+    },
+    {
+        "id": "17",
+        "name": "Lata",
+        "description": "Las latas están hechas de metal ferroso, su nombre se debe a que ese metal tiene muchos componentes que vienen del fierro, las puedes diferenciar del aluminio pues si les pones un imán cerca, este se pega a la lata.",
+        "isFavorite": false,
+        "process": "Llévalas a centros de reciclaje de metales, donde se fundirán para reutilización.",
+        "icon": "https://cdn.ecolana.com.mx/4sa9dn98u64snf77z78sckd9si5z?response-content-disposition=inline%3B%20filename%3D%22Lata.png%22%3B%20filename%2A%3DUTF-8%27%27Lata.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T222302Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=f77e599ab490ebec11dbc6b21657fdcf9d1b8f7a852f3fb3c08c6ba28645b71b"
+    },
+    {
+        "id": "62",
+        "name": "LDPE",
+        "description": "Polietileno de baja densidad, usado en bolsas y envolturas flexibles.",
+        "isFavorite": false,
+        "process": "Llévalo a puntos de reciclaje que acepten plástico No. 4, como centros de acopio de plásticos.",
+        "icon": "https://cdn.ecolana.com.mx/c4h4jhm1s1dced4gypivh2eoyqcf?response-content-disposition=inline%3B%20filename%3D%22LDPE.png%22%3B%20filename%2A%3DUTF-8%27%27LDPE.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T222302Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=78a6b32eed457fca59c3410084e0304c892a030e527d349d529e7b90e4cf6d12"
+    },
+    {
+        "id": "76",
+        "name": "Libros",
+        "description": "Material de lectura impreso en papel, encuadernado y de varias hojas.",
+        "isFavorite": false,
+        "process": "Dona libros en buen estado o recíclalos en centros de reciclaje de papel.",
+        "icon": "https://cdn.ecolana.com.mx/jtglfgp2camr1mk4i5yx2kmkfcsy?response-content-disposition=inline%3B%20filename%3D%22Libro.png%22%3B%20filename%2A%3DUTF-8%27%27Libro.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T222302Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=6d419149fd105da64c3581718ffdef3e52878baeec19fa2b147590ea055b7984"
+    },
+    {
+        "id": "49",
+        "name": "Línea blanca y refrigeración",
+        "description": "Electrodomésticos grandes como refrigeradores, lavadoras y estufas.",
+        "isFavorite": false,
+        "process": "Llévalos a centros de reciclaje de electrodomésticos, donde desmantelan y reciclan piezas.",
+        "icon": "https://cdn.ecolana.com.mx/s5al3q3ofpq1jhsb0mey1b5ym1oe?response-content-disposition=inline%3B%20filename%3D%22REFRI.png%22%3B%20filename%2A%3DUTF-8%27%27REFRI.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T222302Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=240cf5a3c4adf22f973231a8a8a90b809cc1b7d095f1a85d60be905d17e7bba8"
+    },
+    {
+        "id": "24",
+        "name": "Llantas",
+        "description": "Están hechas de plástico vulcanizado, lo que vuelve difícil su reciclaje para hacer nuevas llantas.",
+        "isFavorite": false,
+        "process": "Llévalas a centros de reciclaje de llantas o puntos de acopio especializados para reutilización o energía.",
+        "icon": "https://cdn.ecolana.com.mx/fh6peh215hbn3ruxr4yuxduyw14i?response-content-disposition=inline%3B%20filename%3D%22Llantas.png%22%3B%20filename%2A%3DUTF-8%27%27Llantas.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T222302Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=93ee5c29600a94e3b6811e40e6aa19367c6a79cd3b702a3f3c2ab15e2c2ebd0e"
+    },
+    {
+        "id": "55",
+        "name": "Magnesio",
+        "description": "Metal ligero y maleable, usado en varias industrias.",
+        "isFavorite": false,
+        "process": "Lleva piezas de magnesio a centros de reciclaje de metales para fundición y reutilización.",
+        "icon": "https://cdn.ecolana.com.mx/o0kq9j295qxjpbwxmjfpcpe46ein?response-content-disposition=inline%3B%20filename%3D%22MAGNESIO.png%22%3B%20filename%2A%3DUTF-8%27%27MAGNESIO.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T222302Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=da541680c558e2b995a78e037b26ab21b2381ee636ce659ebdb1d31801e812db"
+    },
+    {
+        "id": "3",
+        "name": "Medicamentos",
+        "description": "Los residuos de medicamentos que ya no tienen vigencia son peligrosos para la salud si son consumidos, así como para el ambiente si son desechados. Además, los medicamentos y sus envases representan un peligro latente pues pueden ser utilizados en el mercado",
+        "isFavorite": false,
+        "process": "Llévalos a puntos de recolección en farmacias para su eliminación segura.",
+        "icon": "https://cdn.ecolana.com.mx/nvc8s10b2j7irgxuyfxlalajm766?response-content-disposition=inline%3B%20filename%3D%22Medicamentos.png%22%3B%20filename%2A%3DUTF-8%27%27Medicamentos.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T222302Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=8921bba287a01ddadec6a442ff87c655ee1d016e6b7d5fdcef4a32a716da5109"
+    },
+    {
+        "id": "35",
+        "name": "Metal",
+        "description": "Material sólido, maleable, y conductor, usado en construcciones y productos",
+        "isFavorite": false,
+        "process": "Llévalo a centros de reciclaje de metales, donde lo fundirán para reutilización.",
+        "icon": null
+    },
+    {
+        "id": "60",
+        "name": "Monedas viejas",
+        "description": "Monedas antiguas que ya no están en circulación.",
+        "isFavorite": false,
+        "process": "Donarlas a coleccionistas, museos, o llevarlas a centros de reciclaje de metales.",
+        "icon": "https://cdn.ecolana.com.mx/ihhimcnhmaww353l5r280j7v1y90?response-content-disposition=inline%3B%20filename%3D%22MONEDA.png%22%3B%20filename%2A%3DUTF-8%27%27MONEDA.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T222302Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=6ba183b60f9052267eb73b8a3adcaee22b629fdd02b7735258cf14cb4186a5ed"
+    },
+    {
+        "id": "54",
+        "name": "Niquel",
+        "description": "Metal utilizado en aleaciones y productos electrónicos.",
+        "isFavorite": false,
+        "process": "Llevar a centros de reciclaje de metales que acepten níquel para fundición.",
+        "icon": "https://cdn.ecolana.com.mx/3y8xrrxbatvsd1r45zx8i6vo33t1?response-content-disposition=inline%3B%20filename%3D%22niquel.png%22%3B%20filename%2A%3DUTF-8%27%27niquel.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T222302Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=4928437eb2b6d75d3ff883f1b2bde818bc1b6d707e6d6d827fc9573e81f891ae"
+    },
+    {
+        "id": "4",
+        "name": "Papel",
+        "description": "El Papel es un producto natural, renovable y reciclable hecho de fibras de celulosa unidas entre sí en un proceso industrial. La celulosa de la que se fabrica viene de los árboles. Se utiliza para escribir, envolver cosas y dibujar entre otros.",
+        "isFavorite": false,
+        "process": "Llévalo limpio y seco a centros de reciclaje de papel para su reprocesamiento.",
+        "icon": "https://cdn.ecolana.com.mx/vgwp7x4ne9fbn13r2ip7zg5pma1l?response-content-disposition=inline%3B%20filename%3D%22Papel.png%22%3B%20filename%2A%3DUTF-8%27%27Papel.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T222302Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=41da142e4ec3c37579db0481c5eb2c51da8eb0a5fc63c29865cc73ccc10ef773"
+    },
+    {
+        "id": "71",
+        "name": "Papel mixto",
+        "description": "El papel mixto es la mezcla de papeles de revista, papel blanco o de color, periódico, tickets, cartulinas y otros.",
+        "isFavorite": false,
+        "process": "Llévalo a centros de reciclaje que acepten papel mixto.",
+        "icon": "https://cdn.ecolana.com.mx/jgiyl91ai79h8z7nf8fvbrx57i7k?response-content-disposition=inline%3B%20filename%3D%22PapelMixto.png%22%3B%20filename%2A%3DUTF-8%27%27PapelMixto.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T222303Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=662c988e9142cb768faee9df7fa2b1b6411c150c3b8dcddec84329fa89e8c32d"
+    },
+    {
+        "id": "13",
+        "name": "Periódico",
+        "description": "Es un tipo de papel con alta absorbencia de tinta que cuando lo tocamos mancha. Lo utilizamos para leer sobre noticias.",
+        "isFavorite": false,
+        "process": "Llévalo a centros de reciclaje de papel que acepten periódico.",
+        "icon": "https://cdn.ecolana.com.mx/ohbh747tmx0vuup0zbrt3ijnnexc?response-content-disposition=inline%3B%20filename%3D%22Periodico.png%22%3B%20filename%2A%3DUTF-8%27%27Periodico.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T222303Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=2245b141e626078d7a6754d9ea4abccb5e91eca4182ced8f5c8ad64e2d8f628f"
+    },
+    {
+        "id": "18",
+        "name": "PET",
+        "description": "El PET es un plástico que se identifica con el número 1, su nombre completo es teraftalato de polietileno.",
+        "isFavorite": false,
+        "process": "Lleva las botellas de PET a centros de reciclaje de plásticos o programas de reciclaje.",
+        "icon": "https://cdn.ecolana.com.mx/cwexhd0do32up4osg7wxohnzzs8m?response-content-disposition=inline%3B%20filename%3D%22PET.png%22%3B%20filename%2A%3DUTF-8%27%27PET.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T222303Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=68388f48f3f877070630675ad5721f100e54c2c055a83b362ee5498990ac2dfb"
+    },
+    {
+        "id": "1",
+        "name": "Pilas alcalinas",
+        "description": "Las pilas son dispositivos que convierten la energía química en energía eléctrica.",
+        "isFavorite": false,
+        "process": "Llévalas a puntos de reciclaje de baterías, como centros de reciclaje o tiendas autorizadas.",
+        "icon": "https://cdn.ecolana.com.mx/hmrmgefk41lx1ttzl4iyn52ffuwd?response-content-disposition=inline%3B%20filename%3D%22Pilas.png%22%3B%20filename%2A%3DUTF-8%27%27Pilas.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T222303Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=4695ad889e074025c6ae8847155e126628667ad28d747fb20cbcb04a591ef9de"
+    },
+    {
+        "id": "20",
+        "name": "Plástico Duro",
+        "description": "El plástico marcado con el número 2 en el triángulo de reciclaje, su nombre es polietileno de alta densidad.",
+        "isFavorite": false,
+        "process": "Lleva este tipo de plástico a centros de reciclaje especializados en plásticos rígidos.",
+        "icon": "https://cdn.ecolana.com.mx/jrpap0zz9qrwo5mppg3nxbrcflah?response-content-disposition=inline%3B%20filename%3D%22PLASTICO_DURO.png%22%3B%20filename%2A%3DUTF-8%27%27PLASTICO_DURO.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T222303Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a931e1d986bf1072a81d883226b165905360fdf477e926a2b31f31c3a10afaed"
+    },
+    {
+        "id": "39",
+        "name": "Plástico No. 7",
+        "description": "También llamado “plástico de ingeniería” debido a las mezclas de polímeros (diversos materiales) para tener múltiples propiedades y cumplir con diversas funcionalidades.Estos tipos de materiales se encuentran en muchas aplicaciones de larga duración. ¡Son muy útiles! Sin embargo, EVITA comprar empaques desechables con estos materiales ya que NO SE RECICLAN NO MEZCLES este tipo de plásticos con otros materiales ya que no te los aceptan en ningún centro de acopio. ¡Mejor regálalos a un amigo o dónalos de ser posible!",
+        "isFavorite": false,
+        "process": "No te los aceptan en ningún centro de acopio. ¡Mejor regálalos a un amigo o dónalos de ser posible!",
+        "icon": null
+    },
+    {
+        "id": "23",
+        "name": "Playo",
+        "description": "Se conoce también como plástico strech, polistrech o plástico película y se identifica con el número 4 que corresponde al polietileno de baja densidad.",
+        "isFavorite": false,
+        "process": "Llévalo a centros de reciclaje que acepten plásticos flexibles.",
+        "icon": "https://cdn.ecolana.com.mx/h7bx6yaufg18wxexvf8hs99o5862?response-content-disposition=inline%3B%20filename%3D%22Playo.png%22%3B%20filename%2A%3DUTF-8%27%27Playo.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241107%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241107T152310Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=490e6a90a86fd02f98bb06e11e1bd916a67b02ac7d629c45365e96daecbad8aa"
+    },
+    {
+        "id": "83",
+        "name": "Playo Negro (Plástico #4)",
+        "description": "LLDPE/PELBD de color negro. Utilizado principalmente para cubrir palets con productos para transporte.",
+        "isFavorite": false,
+        "process": "Llévalo a centros de reciclaje que acepten plástico No. 4.",
+        "icon": null
+    },
+    {
+        "id": "53",
+        "name": "Plomo",
+        "description": "Metal pesado y maleable, usado en baterías y otros productos.",
+        "isFavorite": false,
+        "process": "Llévalo a centros de reciclaje de metales pesados para su correcto manejo.",
+        "icon": "https://cdn.ecolana.com.mx/y1r0crbltpu3redc045pww202tg2?response-content-disposition=inline%3B%20filename%3D%22plomo.png%22%3B%20filename%2A%3DUTF-8%27%27plomo.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241107%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241107T152310Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=1510b2ff082b3657719202944ffd9a7a8cd5e19d4361be972f368dd159de743b"
+    },
+    {
+        "id": "84",
+        "name": "Policarbonato (PC)",
+        "description": "Plástico de ingeniería utilizado en garrafones, sustituto de ventanas de vidrio, reflectores de faros, artículos de escritorio como reglas, entre otros.",
+        "isFavorite": false,
+        "process": "Llévalo a centros de reciclaje especializados en plásticos rígidos o No. 7.",
+        "icon": null
+    },
+    {
+        "id": "40",
+        "name": "Poliestireno",
+        "description": "Un tipo de plástico versátil y resistente que se identifica con las iniciales PS  y el numero 6 en el triangulo de reciclaje. Hay 3 tipos: poliestireno cristal, expandido (unicel) y HIPS (de alto impacto).",
+        "isFavorite": false,
+        "process": "Lleva envases de poliestireno a centros de reciclaje que acepten este material.",
+        "icon": "https://cdn.ecolana.com.mx/vg86sv0rmtrx39n7sxf13z0782b5?response-content-disposition=inline%3B%20filename%3D%22Poliestireno%20%25281%2529.png%22%3B%20filename%2A%3DUTF-8%27%27Poliestireno%2520%25281%2529.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241107%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241107T152310Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=218a5458b6dcbf20a7fcff928a4c9aa2d2b11ca042130ac492cbe541cf48a419"
+    },
+    {
+        "id": "82",
+        "name": "Polipropileno (Plástico #5)",
+        "description": "Plástico rígido utilizado en envases de alimentos y productos de limpieza.",
+        "isFavorite": false,
+        "process": "Llévalo a centros de reciclaje de plásticos que acepten No. 5.",
+        "icon": null
+    },
+    {
+        "id": "78",
+        "name": "Productos Natura",
+        "description": "Envases y productos de la marca Natura.",
+        "isFavorite": false,
+        "process": "Natura cuenta con programas de reciclaje; revisa sus opciones para reciclaje de envases.",
+        "icon": null
+    },
+    {
+        "id": "58",
+        "name": "Radiografía",
+        "description": "Imágenes médicas impresas en películas plásticas.",
+        "isFavorite": false,
+        "process": "Lleva las radiografías a centros que reciclen este tipo de película plástica.",
+        "icon": "https://cdn.ecolana.com.mx/ckktdu8pl7mkhvi6yfpvbxfi1lcw?response-content-disposition=inline%3B%20filename%3D%22rediografia.png%22%3B%20filename%2A%3DUTF-8%27%27rediografia.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241107%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241107T152310Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=524f6184acd47d9cf5d17f62f379e90eb6127c60dab7e784a7db42a40d960663"
+    },
+    {
+        "id": "14",
+        "name": "Revistas",
+        "description": "Las revistas están hechas de papel brilloso y con muchas tintas de colores.",
+        "isFavorite": false,
+        "process": "Recíclalas en centros de reciclaje de papel que acepten materiales con tinta.",
+        "icon": "https://cdn.ecolana.com.mx/z3vycfbke6l1ppvuil989ohy0btz?response-content-disposition=inline%3B%20filename%3D%22Revistas.png%22%3B%20filename%2A%3DUTF-8%27%27Revistas.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241107%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241107T152310Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=47fab1b7aede50da29c575673ea0792a605c6aa5b6a12de644cc317936de2925"
+    },
+    {
+        "id": "9",
+        "name": "Ropa",
+        "description": "Uno de los materiales más utilizados en el mundo, sin embargo, no existe actualmente una tecnología que permita transformarlos de nuevo en textil, por lo que la mejor opción es reutilizarlos, ya sea dentro de tu hogar, en una industria o en forma de donación para quien más lo necesita.",
+        "isFavorite": false,
+        "process": "Dona ropa en buen estado o lleva ropa dañada a centros de reciclaje textil.",
+        "icon": "https://cdn.ecolana.com.mx/3erot6eo9nqyb0hqlqw46fyn1vxu?response-content-disposition=inline%3B%20filename%3D%22Ropa.png%22%3B%20filename%2A%3DUTF-8%27%27Ropa.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241107%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241107T152310Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=e0ff3a0753a581825a3e4e9fe73a42ae462b70eb215e5f75503146ba15645d5b"
+    },
+    {
+        "id": "32",
+        "name": "Ropa para donación",
+        "description": "Prendas en buen estado que pueden ser reutilizadas.",
+        "isFavorite": false,
+        "process": "Dona la ropa a organizaciones benéficas o puntos de recolección de textiles.",
+        "icon": null
+    },
+    {
+        "id": "38",
+        "name": "Sanitarios",
+        "description": "Materiales utilizados generalmente para higiene personal que no pueden ser reciclados debido a su uso.",
+        "isFavorite": false,
+        "process": "Lleva los sanitarios a centros de reciclaje de construcción para reutilización de materiales.",
+        "icon": "https://cdn.ecolana.com.mx/64y2awgj3skasnl3aducoj4h8bqv?response-content-disposition=inline%3B%20filename%3D%22Sanitarios.png%22%3B%20filename%2A%3DUTF-8%27%27Sanitarios.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241107%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241107T152310Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=84d079322e0c40fdf039bfada4ce092c163a3a1159dec2d1d0049fce7c281868"
+    },
+    {
+        "id": "21",
+        "name": "Tapitas",
+        "description": "Tapas de plástico pequeñas, comúnmente usadas en botellas.",
+        "isFavorite": false,
+        "process": "Recoge y lleva las tapitas a programas de reciclaje o acopios de plástico.",
+        "icon": null
+    },
+    {
+        "id": "31",
+        "name": "Tarimas de madera",
+        "description": "La madera viene del tronco de los árboles, es un material natural que se puede incluir en los residuos orgánicos si no ha tenido ningún tratamiento (barniz o pintura)",
+        "isFavorite": false,
+        "process": "Llévalas a centros de reciclaje de madera o reutilízalas para proyectos de bricolaje.",
+        "icon": "https://cdn.ecolana.com.mx/i4ix5by2eymts0kt2t4ojdk4pkg4?response-content-disposition=inline%3B%20filename%3D%22madera.png%22%3B%20filename%2A%3DUTF-8%27%27madera.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241107%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241107T152310Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=fb7ec8ad3c553d496d55b76164b6aeadcaa1cecb9c8139e808385904c1f31be7"
+    },
+    {
+        "id": "67",
+        "name": "Tarjetas de plástico (ej. crédito débito...)",
+        "description": "Tarjetas de PVC usadas para pagos y membresías.",
+        "isFavorite": false,
+        "process": "Llévalas a programas de reciclaje de PVC o centros de reciclaje que acepten plásticos.",
+        "icon": "https://cdn.ecolana.com.mx/fko220q58kkf2sqz5bjb8cxwafe2?response-content-disposition=inline%3B%20filename%3D%22credit_card_PNG207.png%22%3B%20filename%2A%3DUTF-8%27%27credit_card_PNG207.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241107%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241107T152310Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a1e1db3d29a79eec5032c758463d0aba9a3ba5cb6cdbe9c8be3fef3400e4b91a"
+    },
+    {
+        "id": "22",
+        "name": "Tetra Pak",
+        "description": "Envase multicapas conformado por 3 materiales: Cartón: Le da forma y fuerza al envase. Polietileno: Lo protege de la humedad. Aluminio: Ayuda a conservar/proteger el contenido del envase (ejemplo: leche y jugo)",
+        "isFavorite": false,
+        "process": "Lleva los envases a centros de reciclaje especializados o programas de recolección específicos para Tetra Pak.",
+        "icon": "https://cdn.ecolana.com.mx/jspznbks56n6pnrwjwt7m5y81615?response-content-disposition=inline%3B%20filename%3D%22TetraPak.png%22%3B%20filename%2A%3DUTF-8%27%27TetraPak.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241107%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241107T152310Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=3cad7d8e577732ddbb426de2287eb3ce763b1a2801a49dd74b3c66b0a61cd7e0"
+    },
+    {
+        "id": "50",
+        "name": "Tubos de pasta dental",
+        "description": "Envases flexibles de plástico y aluminio que contienen productos de higiene bucal.",
+        "isFavorite": false,
+        "process": "Llévalos a centros de reciclaje que acepten empaques de higiene personal o participa en programas de reciclaje de marcas de productos dentales.",
+        "icon": "https://cdn.ecolana.com.mx/cec25wa8k51948lx4569zl0xncb1?response-content-disposition=inline%3B%20filename%3D%22PASTA_DENTAL.png%22%3B%20filename%2A%3DUTF-8%27%27PASTA_DENTAL.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241107%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241107T152310Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=30069d25c929c70e247b718d2fd016230326812ea88c108680c52f82a5f56159"
+    },
+    {
+        "id": "7",
+        "name": "Unicel",
+        "description": "Material de poliestireno expandido, comúnmente usado en empaques y vasos desechables.",
+        "isFavorite": false,
+        "process": "Lleva el unicel a centros de reciclaje que acepten poliestireno expandido, ya que su reciclaje es especializado.",
+        "icon": "https://cdn.ecolana.com.mx/73emz3entsjma7ndnfa8yzhchja2?response-content-disposition=inline%3B%20filename%3D%22ecolana_unicel.png%22%3B%20filename%2A%3DUTF-8%27%27ecolana_unicel.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241107%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241107T152310Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=24e251258f7b7f79c87c956a6622cc8c475a3060c5177da2d13a16d519f2e489"
+    },
+    {
+        "id": "5",
+        "name": "Vidrio",
+        "description": "El vidrio es un material inorgánico natural hecho de sílice principalmente y que se origina a partir de la fundición de arena.",
+        "isFavorite": false,
+        "process": "Llévalo a centros de reciclaje de vidrio donde se funde para fabricar nuevos productos.",
+        "icon": "https://cdn.ecolana.com.mx/titupuhkmsa33uoyhrxo63nvgtvv?response-content-disposition=inline%3B%20filename%3D%22vidrio%20%25281%2529.png%22%3B%20filename%2A%3DUTF-8%27%27vidrio%2520%25281%2529.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241107%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241107T152310Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=d65d9a117b45698ab4ba184d7d253d52227f16f5c05682783651aecc1a461541"
+    },
+    {
+        "id": "72",
+        "name": "Vidrio plano",
+        "description": "Tipo de vidrio liso utilizado en ventanas, espejos y puertas.",
+        "isFavorite": false,
+        "process": "Llévalo a centros de reciclaje de vidrio plano o construcción, donde se recicla o se reutiliza en otros productos.",
+        "icon": "https://cdn.ecolana.com.mx/rkn83sw9yjm56flvp4hzcml7z1pt?response-content-disposition=inline%3B%20filename%3D%22vidrio_plano.png%22%3B%20filename%2A%3DUTF-8%27%27vidrio_plano.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241107%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241107T152310Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=dc7394eb7be1f04f2654fbd7e5596588c04d4840f1cee1b6d8dd1a12217ac1f4"
     },
 ]
