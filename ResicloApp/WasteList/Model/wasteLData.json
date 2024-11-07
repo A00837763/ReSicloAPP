@@ -1,0 +1,210 @@
+[
+    {
+        "id": "57",
+        "name": "ABS",
+        "description": "Material plástico utilizado en diversos productos como piezas de automóviles y electrodomésticos.",
+        "isFavorite": false,
+        "process": "Reciclable en algunos centros especializados.",
+        "icon": "https://cdn.ecolana.com.mx/w1st0tisaacwampzqqlpjl2983yb?response-content-disposition=inline%3B%20filename%3D%22ABS.png%22%3B%20filename%2A%3DUTF-8%27%27ABS.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T163856Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=331e4b2f93e56492e31d698aec26125676431041cd50bf9cd47b6979dda28570"
+    },
+    {
+        "id": "8",
+        "name": "Aceite Vegetal Usado",
+        "description": "El aceite utilizado para cocinar, que al desecharse puede contaminar el agua si se tira al drenaje.",
+        "isFavorite": false,
+        "process": "Recolectar en puntos de reciclaje especializados.",
+        "icon": "https://cdn.ecolana.com.mx/552t86hbfq038qbws3ncynbvwwf4?response-content-disposition=inline%3B%20filename%3D%22AceiteUsado.png%22%3B%20filename%2A%3DUTF-8%27%27AceiteUsado.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T163856Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=2e4887f05324438dcc2bcedc3ad1e335fa4a3c8e1b27bfdec4a444afb153abc3"
+    },
+    {
+        "id": "56",
+        "name": "Acero Inoxidable",
+        "description": "Material metálico resistente a la corrosión y ampliamente utilizado en utensilios de cocina.",
+        "isFavorite": false,
+        "process": "Reciclable en la mayoría de plantas de reciclaje de metales.",
+        "icon": "https://cdn.ecolana.com.mx/x8jaz12xi3ugigmzixl5540g52xd?response-content-disposition=inline%3B%20filename%3D%22ACERO_INOX.png%22%3B%20filename%2A%3DUTF-8%27%27ACERO_INOX.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T163856Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a281ea0f1749cece46069856ebef154c4e6fdc5ad0219b5e6319ebe940e2c685"
+    },
+    {
+        "id": "2",
+        "name": "Acumuladores",
+        "description": "Baterías compuestas por varias pilas conectadas, utilizadas en dispositivos electrónicos.",
+        "isFavorite": false,
+        "process": "Reciclar en puntos de reciclaje especializados en baterías.",
+        "icon": "https://cdn.ecolana.com.mx/yh5jok750zczu7pt4lf2v27vljym?response-content-disposition=inline%3B%20filename%3D%22Acumuladores.png%22%3B%20filename%2A%3DUTF-8%27%27Acumuladores.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T163856Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=f5bc88816a8aed765f546bf5aa08f925381648b832b632efa793885ad060b529"
+    },
+    {
+        "id": "15",
+        "name": "Aluminio",
+        "description": "Metal ligero y resistente a la oxidación, usado en envases y estructuras.",
+        "isFavorite": false,
+        "process": "Reciclar en plantas de reciclaje de metales.",
+        "icon": "https://cdn.ecolana.com.mx/6oj3f8ejv2i859kth27g6p303dag?response-content-disposition=inline%3B%20filename%3D%22aluminio.png%22%3B%20filename%2A%3DUTF-8%27%27aluminio.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T163856Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=c541fa90829fcfbc29042abb004997cc23e9b7f6ebac454ab054da44d893571c"
+    },
+    {
+        "id": "52",
+        "name": "Antimonio",
+        "description": "Elemento químico utilizado en aleaciones y compuestos para retardantes de fuego.",
+        "isFavorite": false,
+        "process": "Reciclaje limitado en instalaciones especializadas.",
+        "icon": "https://cdn.ecolana.com.mx/9tjftu7jky9poo6w8xea6z5gltau?response-content-disposition=inline%3B%20filename%3D%22antimonio.png%22%3B%20filename%2A%3DUTF-8%27%27antimonio.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T163856Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=4f1de51b39a02c24bbb61d80545fb16409c5744e8fe1f6de9473f5fd842c226f"
+    },
+    {
+        "id": "75",
+        "name": "Arboles de Navidad",
+        "description": "Árboles utilizados durante las festividades navideñas.",
+        "isFavorite": false,
+        "process": "Reciclaje en centros que acepten residuos orgánicos o compostaje.",
+        "icon": "https://cdn.ecolana.com.mx/cewa47c5gexdb0o3exu3rjuld5il?response-content-disposition=inline%3B%20filename%3D%22ArbolNavidad.png%22%3B%20filename%2A%3DUTF-8%27%27ArbolNavidad.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T163856Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=98a41e7f5f0ffbfbf4b8782a0f6cef0030d606951dbc9c81edbe73c2931540c1"
+    },
+    {
+        "id": "61",
+        "name": "Balastra",
+        "description": "Dispositivo eléctrico usado para regular corriente en luces fluorescentes.",
+        "isFavorite": false,
+        "process": "Reciclaje en centros de manejo de residuos electrónicos.",
+        "icon": "https://cdn.ecolana.com.mx/twiig8agfkeegi54qh1hkm9in4t5?response-content-disposition=inline%3B%20filename%3D%22BALASTRA.png%22%3B%20filename%2A%3DUTF-8%27%27BALASTRA.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T163856Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=99fc598ee8ae436c519f6b4d10b2afc4705e0496f4f8a289ba3c4e96e635512a"
+    },
+    {
+        "id": "25",
+        "name": "Bolsas de Plástico",
+        "description": "Las bolsas que se reciclan generalmente están hechas de plástico. Tipos: BOLSA #2 HDPE: Hace ruido, es opaca y estira, utilizada en bolsas del supermercado. BOLSA #4 LDPE: Flexibles, suaves al tacto, común en bolsas de pan. BOLSA #5 BOPP: Transparentes o metalizadas, usadas en empaque de botanas.",
+        "isFavorite": false,
+        "process": "Depositar en centros de reciclaje adecuados para cada tipo de bolsa.",
+        "icon": "https://cdn.ecolana.com.mx/cqg961iw18t9zhog68b9ykucj2a9?response-content-disposition=inline%3B%20filename%3D%22BolsasPlastico.png%22%3B%20filename%2A%3DUTF-8%27%27BolsasPlastico.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T163856Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=fcef50db7188611916357f02997e94e33f3186bead7a73d45ff935f6cb6ec8cb"
+    },
+    {
+        "id": "46",
+        "name": "Bolsas HDPE (Plástico NO. 2)",
+        "description": "Hace ruido, es opaca y estira, utilizada en bolsas del supermercado.",
+        "isFavorite": false,
+        "process": "Reciclaje en plantas especializadas para plásticos de alta densidad, transformándolas en nuevos productos plásticos.",
+        "icon": null
+    },
+    {
+        "id": "89",
+        "name": "Bolsas reutilizables (PP)",
+        "description": "Las bolsas reutilizables se usan para transportar mercancias. Están elaboradas a partir de tela, tela no tejida de polipropileno, tela tejida de polipropileno, etc, siempre y cuando sean durables y puedan reutilizarse en multiples ocasiones.",
+        "isFavorite": false,
+        "process": "Reciclaje de polipropileno, creando nuevos productos plásticos, o reuso para evitar desperdicio.",
+        "icon": "https://cdn.ecolana.com.mx/3fnj4mq7k7xdsx6wi17d2e9q2gai?response-content-disposition=inline%3B%20filename%3D%22Bolsa%20tela%20reutilizable.png%22%3B%20filename%2A%3DUTF-8%27%27Bolsa%2520tela%2520reutilizable.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T163856Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=4fd91bbab995c7a819107817f3495d7173b4a71bcf691abb05c8ce85bef2577e"
+    },
+    {
+        "id": "48",
+        "name": "BOPP (Polipropileno Biorientado- Plástico No. 5)",
+        "description": "Transparentes o metalizadas, usadas en empaque de botanas.",
+        "isFavorite": false,
+        "process": "Este tipo de plástico se puede llevar a centros de reciclaje de plásticos flexibles. Asegúrate de que no contenga residuos de alimentos o líquidos.",
+        "icon": "https://cdn.ecolana.com.mx/pym5jcwq2fx9r7ahojpakfnrpabs?response-content-disposition=inline%3B%20filename%3D%22PP_bimbo_app.png%22%3B%20filename%2A%3DUTF-8%27%27PP_bimbo_app.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T163856Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=d4c2dec930a5f59be034709961e49eba4f4df68997dfa8fb7c26bd24e97c9ccc"
+    },
+    {
+        "id": "80",
+        "name": "Botella de Grupo Modelo",
+        "description": "Botellas de vidio del Grupo Modelo como Corona Extra, Victoria, Modelo Especial, Negra Modelo, Bud Light, Barrilito, etc.",
+        "isFavorite": false,
+        "process": "Lleva las botellas de vidrio o PET vacías y limpias a un centro de reciclaje de vidrio o plástico, dependiendo del material. Algunas tiendas tienen contenedores para reciclaje.",
+        "icon": "https://cdn.ecolana.com.mx/whqifso77sjmjw5dgcmswvxs2nqm?response-content-disposition=inline%3B%20filename%3D%22BotellaModelo_diccionario.png%22%3B%20filename%2A%3DUTF-8%27%27BotellaModelo_diccionario.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T163856Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=b95421ea78246dec699f5ab9dfc9b744a77913a31d4e7365b8d2d80d0715e590"
+    },
+    {
+        "id": "45",
+        "name": "Bronce",
+        "description": "Puedes llevar artículos de bronce a centros de reciclaje de metales. Si tienes objetos como joyas o piezas industriales, asegúrate de llevarlos a un reciclador especializado en metales.",
+        "isFavorite": false,
+        "process": "Reciclaje de bronce en fundiciones para crear nuevos productos metálicos o componentes industriales.",
+        "icon": "https://cdn.ecolana.com.mx/vlfjlms27j5fvgxah3ntajl9gv3h?response-content-disposition=inline%3B%20filename%3D%22BRONCE.png%22%3B%20filename%2A%3DUTF-8%27%27BRONCE.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T163856Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=8fdea6ad49cffd5ddf4956cfd8542e4c5d47528d4c54dea6406867bae112aa1b"
+    },
+    {
+        "id": "33",
+        "name": "Cables",
+        "description": "Cables de celulares, CPU de computadoras, laptops, calculadoras, fax, teléfonos, tabletas, etc.",
+        "isFavorite": false,
+        "process": "Lleva los cables a centros de reciclaje de materiales electrónicos o de metales. Los cables de cobre y otros metales deben ser separados del plástico para facilitar el reciclaje.",
+        "icon": "https://cdn.ecolana.com.mx/sl6i44geqxuuafnemqrf2imrelf4?response-content-disposition=inline%3B%20filename%3D%22Cables.png%22%3B%20filename%2A%3DUTF-8%27%27Cables.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T163856Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=1ec3efcdcbad6bb294ebd3fb3a5fd7eb24963cbab41bf12327624f9a6acfb088"
+    },
+    {
+        "id": "11",
+        "name": "Caple",
+        "description": "Cartón delgado de una sola capa.",
+        "isFavorite": false,
+        "process": "Si tienes caples llévalos a centros de reciclaje puedan ser reciclados correctamente.",
+        "icon": "https://cdn.ecolana.com.mx/ptvgojbfoucljfwylgqlzddsai7n?response-content-disposition=inline%3B%20filename%3D%22Caple.png%22%3B%20filename%2A%3DUTF-8%27%27Caple.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T163856Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a76bd0dec93d3a9043416cacd4896cd77c76946f56764d9617fe2c3edfd0efa7"
+    },
+    {
+        "id": "26",
+        "name": "Cápsulas NESCAFÉ® Dolce Gusto®",
+        "description": "Son cápsulas de café hechas de plástico (polipropileno), una membrada de polietileno y una lámina de aluminio delgada.",
+        "isFavorite": false,
+        "process": "Puedes llevar las cápsulas de café a puntos de reciclaje donde acepten plásticos o aluminio. Algunos centros tienen contenedores específicos para reciclaje de cápsulas.",
+        "icon": "https://cdn.ecolana.com.mx/roiphx17737edfbm85gvwmv79p7x?response-content-disposition=inline%3B%20filename%3D%22Capsulas%20%25281%2529.png%22%3B%20filename%2A%3DUTF-8%27%27Capsulas%2520%25281%2529.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T163856Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=cfb40a5ef51d2fcdcabf19370987c28fcba589423a09c7da71cd55d6ee0b7295"
+    },
+    {
+        "id": "12",
+        "name": "Cartón",
+        "description": "El cartón corrugado está hecho con 3 a 5 capas lisas y onduladas de papel acomodadas para hacerlo resistente",
+        "isFavorite": false,
+        "process": "El cartón debe llevarse a puntos de reciclaje, asegurándote de que esté limpio y seco. Muchas ciudades tienen contenedores de reciclaje para cartón en lugares públicos.",
+        "icon": "https://cdn.ecolana.com.mx/gkuaxjj16elwiatb6pdx1o6797rm?response-content-disposition=inline%3B%20filename%3D%22Carton.png%22%3B%20filename%2A%3DUTF-8%27%27Carton.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T163856Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=0acb9f14b92badb396b2ba1d7b356218de7a7cb6b87105f22d84784c753a2091"
+    },
+    {
+        "id": "29",
+        "name": "Cartuchos de tinta",
+        "description": "Un cartucho de tinta o cartucho de inyección de tinta es un conjunto sustituible de una impresora que contiene la tinta y, frecuentemente, también el propio cabezal de impresión que proyecta la tinta en el papel durante la impresión",
+        "isFavorite": false,
+        "process": "Lleva tus cartuchos de tinta vacíos a tiendas o centros de reciclaje que acepten estos productos. Algunos minoristas tienen programas de devolución para reciclaje.",
+        "icon": "https://cdn.ecolana.com.mx/c4j6b3vt791boj69t0kexfofrqp0?response-content-disposition=inline%3B%20filename%3D%22cartucho.png%22%3B%20filename%2A%3DUTF-8%27%27cartucho.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T163856Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=339e5513d19e5a4f605f00e2900ecd9f5d260530c074b939da22364833baf274"
+    },
+    {
+        "id": "27",
+        "name": "CD",
+        "description": "El disco compacto es un disco óptico utilizado para almacenar datos en formato digital, ​ consistentes en cualquier tipo de información.",
+        "isFavorite": false,
+        "process": "Los CD pueden llevarse a centros de reciclaje de plástico y metales, donde serán procesados para extraer los materiales reutilizables.",
+        "icon": ""
+    },
+    {
+        "id": "74",
+        "name": "Celulares y accesorios",
+        "description": "Teléfonos y accesorios que han terminado su vida útil",
+        "isFavorite": false,
+        "process": "Lleva tu celular viejo a centros de reciclaje de electrónicos, donde se desmontarán para recuperar metales preciosos y plásticos, y evitar que terminen en un vertedero.",
+        "icon": "https://cdn.ecolana.com.mx/s3v1mgd68y2yw1h63b63k8oe0kp7?response-content-disposition=inline%3B%20filename%3D%22CelularesAccesorios.png%22%3B%20filename%2A%3DUTF-8%27%27CelularesAccesorios.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T163856Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=4d21079c821185a5e6a57eda08df3804f97b0a7bdf0bd94d67c0220c56a67932"
+    },
+    {
+        "id": "51",
+        "name": "Cepillo de dientes",
+        "description": "El cepillo de dientes o cepillo dental es un instrumento de higiene oral, utilizado para limpiar dientes y encías.",
+        "isFavorite": false,
+        "process": "Puedes llevar tus cepillos de dientes viejos a puntos de reciclaje de plásticos. Si están hechos de materiales biodegradables, algunos centros los aceptan también.",
+        "icon": "https://cdn.ecolana.com.mx/5frlwjyfza0dtw3ab3nfehc7lnbx?response-content-disposition=inline%3B%20filename%3D%22CEPILLO_DIENTES.png%22%3B%20filename%2A%3DUTF-8%27%27CEPILLO_DIENTES.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T163856Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a807134e01606375507412e6ad14eced80bdc521fb292aa70305fa082da30d6a"
+    },
+    {
+        "id": "87",
+        "name": "Charolas de plástico (PET,PP, PE y PS)",
+        "description": "Las charolas de plástico, son todos aquellos recipientes en donde se almacena comida y bebida. Algunas de las presentaciones más conocidas son: domos, bisagras, charolas, vasos y tapas de vasos. \r\nNo lleves charolas que tengan restos orgánicos porque no se aceptan en los Centros de Acopio. Ni los de plástico No. 7 (plásticos biobasados) y unicel.",
+        "isFavorite": false,
+        "process": "Lleva las charolas de plástico a centros de reciclaje de plásticos, separando por tipo de material. Asegúrate de limpiarlas antes de entregarlas para facilitar el proceso.",
+        "icon": "https://cdn.ecolana.com.mx/h3jq404b4opx2stiyoiqpkqu5wpa?response-content-disposition=inline%3B%20filename%3D%22INIX_RESIDUO_SF_WEB_OP_9.png%22%3B%20filename%2A%3DUTF-8%27%27INIX_RESIDUO_SF_WEB_OP_9.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T163856Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=e1f2f6452a993583cf07fbf63262534ed522b26796c92d66dcdbdd8f75404817"
+    },
+    {
+        "id": "16",
+        "name": "Chatarra",
+        "description": "Se le dice chatarra a todos los residuos de metales, pedazos de máquinas o máquinas obsoletas.",
+        "isFavorite": false,
+        "process": "Lleva tu chatarra a un centro de reciclaje de metales, donde se procesará para recuperar materiales reutilizables como hierro, acero, aluminio, cobre, etc.",
+        "icon": "https://cdn.ecolana.com.mx/iw056p47vdodwi4s2uxyxakfz5ns?response-content-disposition=inline%3B%20filename%3D%22Chatarra.png%22%3B%20filename%2A%3DUTF-8%27%27Chatarra.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T163856Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=6ca929815737046e5da47b39d1ba012d2f49a7947e821766187f9f782340fc68"
+    },
+    {
+        "id": "44",
+        "name": "Cobre",
+        "description": "Elemento químico metálico de color rojo pardo, brillante, maleable y excelente conductor del calor y la electricidad.",
+        "isFavorite": false,
+        "process": "Puedes llevar cables viejos, tuberías o piezas de cobre a centros de reciclaje de metales, donde serán fundidos y procesados para su reutilización en nuevos productos.",
+        "icon": "https://cdn.ecolana.com.mx/dt529dakq1tamtntfag4d194jlvd?response-content-disposition=inline%3B%20filename%3D%22COBRE.png%22%3B%20filename%2A%3DUTF-8%27%27COBRE.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T163856Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=44d8decbd0a58775f68c00d713c32db0d4348772e24acf21f8b993efb67a2631"
+    },
+    {
+        "id": "28",
+        "name": "Dermocosméticos",
+        "description": "Productos para aplicación tópica, tanto terapéuticos como cosméticos.",
+        "isFavorite": false,
+        "process": "Puedes llevar los empaques a centros especializados.",
+        "icon": "https://cdn.ecolana.com.mx/iosnhpj5sag81hjyo5yjp2ss592q?response-content-disposition=inline%3B%20filename%3D%22DERMOCOSMETICO.png%22%3B%20filename%2A%3DUTF-8%27%27DERMOCOSMETICO.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241106%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241106T222302Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=0e228549c3b6a0e913827f51f82e776b67fc0d590cfaa49984954b6e65012e5e"
+    },
+]

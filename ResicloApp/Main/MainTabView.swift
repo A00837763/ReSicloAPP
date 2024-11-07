@@ -35,7 +35,7 @@ struct MainTabView: View {
                 }
                 .tag(2)
             
-            HomeView(selectedTab: $selectedTab) // Replace with SearchView when available
+            WasteLList() // Replace with SearchView when available
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
@@ -53,4 +53,5 @@ struct MainTabView: View {
     return MainTabView()
         .modelContainer(container)
         .environment(viewModel)
+        .environment(ModelData())
 }
