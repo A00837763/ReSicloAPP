@@ -16,7 +16,7 @@ struct WasteLRow: View {
                 AsyncImage(url: iconURL) { image in
                     image
                         .resizable()
-                        .scaledToFill()
+                        .scaledToFit()
                 } placeholder: {
                     Image(systemName: "photo")
                         .foregroundStyle(Color.resicloGreen2)
