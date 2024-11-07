@@ -55,4 +55,5 @@ struct MainTabView: View {
     return MainTabView()
         .modelContainer(container)
         .environment(viewModel)
+        .environment(ModelData())
 }
