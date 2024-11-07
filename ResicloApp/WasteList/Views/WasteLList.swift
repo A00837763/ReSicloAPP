@@ -23,10 +23,7 @@ struct WasteLList: View {
             List {
                 Toggle(isOn: $showFavoritesOnly) {
                     Text("Favoritos")
-                        .foregroundColor(Color("ResicloGreen2"))
-                        .padding()
-                        .background(Color.white.opacity(0.1))
-                        .cornerRadius(10)
+                        .foregroundColor(Color("ResicloGreen2")) // Color del texto en el toggle
                 }
 
                 ForEach(filteredWastes) { waste in
@@ -35,23 +32,18 @@ struct WasteLList: View {
                     } label: {
                         WasteLRow(waste: waste)
                     }
-                    .transition(.move(edge: .leading))
-                    //.animation(.easeInOut, value: filteredWastes)
                 }
             }
-            .background(
-                LinearGradient(gradient: Gradient(colors: [Color("ResicloGreen1"), Color("ResicloGreen2")]), startPoint: .top, endPoint: .bottom)
-            )
             .navigationTitle("Tipos de desechos")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.inline) // Para que el título sea centrado
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("Tipos de desechos")
                         .font(.headline)
-                        .foregroundColor(Color("ResicloGreen1"))
+                        .foregroundColor(Color("ResicloGreen1")) // Cambia el color del texto
                 }
             }
-            .tint(Color("ResicloGreen1"))
+            .tint(Color("ResicloGreen1")) // Color de los iconos de navegación, si es necesario
         }
     }
 }

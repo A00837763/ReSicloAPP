@@ -22,50 +22,36 @@ struct WasteLDetail: View {
             if let iconURL = waste.iconURL {
                 AsyncImage(url: iconURL) { image in
                     image.resizable()
-                        .transition(.opacity.combined(with: .scale))
                 } placeholder: {
                     ProgressView()
                 }
                 .scaledToFit()
                 .frame(height: 150)
                 .clipShape(Circle())
-                .foregroundColor(Color("ResicloGreen2"))
-                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+                .foregroundColor(Color("ResicloGreen2")) // Color del ícono
             }
 
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading) {
                 HStack {
                     Text(waste.name)
                         .font(.title)
-                        .foregroundColor(Color("ResicloGreen1"))
+                        .foregroundColor(Color("ResicloGreen1")) // Color del título
                     FavoriteButton(isSet: $modelData.wastes[wasteIndex].isFavorite)
                 }
 
-                Divider().background(Color("ResicloGreen2"))
+                Divider().background(Color("ResicloGreen2")) // Color del divisor
 
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Acerca de \(waste.name)")
-                        .font(.title2)
-                        .foregroundColor(Color("ResicloGreen1"))
-                    Text(waste.description)
-                }
-                .padding()
-                .background(Color("ResicloGreen1").opacity(0.1))
-                .cornerRadius(12)
-                .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
+                Text("Acerca de \(waste.name)")
+                    .font(.title2)
+                    .foregroundColor(Color("ResicloGreen1")) // Color del subtítulo
+                Text(waste.description)
 
-                Divider().background(Color("ResicloGreen2"))
+                Divider().background(Color("ResicloGreen2")) // Color del divisor
 
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Información de reciclaje")
-                        .font(.title2)
-                        .foregroundColor(Color("ResicloGreen1"))
-                    Text(waste.process)
-                }
-                .padding()
-                .background(Color("ResicloGreen1").opacity(0.1))
-                .cornerRadius(12)
-                .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
+                Text("Información de reciclaje")
+                    .font(.title2)
+                    .foregroundColor(Color("ResicloGreen1")) // Color del subtítulo
+                Text(waste.process)
             }
             .padding()
         }

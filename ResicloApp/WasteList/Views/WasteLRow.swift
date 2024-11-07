@@ -17,27 +17,25 @@ struct WasteLRow: View {
                     image.resizable()
                 } placeholder: {
                     Image(systemName: "photo")
-                        .foregroundColor(Color("ResicloGreen2"))
+                        .foregroundColor(Color("ResicloGreen2")) // Color del ícono de placeholder
                 }
                 .frame(width: 50, height: 50)
                 .clipShape(Circle())
-                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
             } else {
                 Image(systemName: "photo.fill")
                     .resizable()
                     .foregroundColor(Color("ResicloGreen2"))
                     .frame(width: 50, height: 50)
                     .clipShape(Circle())
-                    .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
             }
 
             VStack(alignment: .leading) {
                 Text(waste.name)
                     .font(.headline)
-                    .foregroundColor(Color("ResicloGreen1"))
-                //Text(waste.description)
-                    //.font(.subheadline)
-                    //.foregroundColor(.gray)
+                    .foregroundColor(Color("ResicloGreen1")) // Color del nombre del residuo
+                Text(waste.description)
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
             }
 
             Spacer()
@@ -45,14 +43,8 @@ struct WasteLRow: View {
             if waste.isFavorite {
                 Image(systemName: "star.fill")
                     .foregroundColor(.yellow)
-                    .scaleEffect(1.2)
-                    .animation(.easeInOut, value: waste.isFavorite)
             }
         }
-        .padding()
-        .background(Color.white.opacity(0.9))
-        .cornerRadius(15)
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
     }
 }
 
