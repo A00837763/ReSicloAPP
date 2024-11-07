@@ -1,10 +1,3 @@
-//
-//  WasteLList.swift
-//  ResicloApp
-//
-//  Created by Hugo Ochoa  on 06/11/24.
-//
-
 import SwiftUI
 
 struct WasteLList: View {
@@ -19,45 +12,74 @@ struct WasteLList: View {
     }
 
     var body: some View {
-        NavigationView {
-            List {
-                Toggle(isOn: $showFavoritesOnly) {
-                    Text("Favoritos")
-                        .foregroundColor(Color("ResicloGreen2"))
-                        .padding()
-                        .background(Color.white.opacity(0.1))
-                        .cornerRadius(10)
-                }
-
-                ForEach(filteredWastes) { waste in
-                    NavigationLink {
-                        WasteLDetail(waste: waste)
-                    } label: {
-                        WasteLRow(waste: waste)
+        NavigationStack {
+            ZStack {
+                Color(.systemBackground)
+                    .ignoresSafeArea()
+                
+                VStack(spacing: 0) {
+                    VStack(spacing: 16) {
+                        Toggle(isOn: $showFavoritesOnly) {
+                            Label {
+                                Text("Mostrar Favoritos")
+                                    .font(.headline)
+                            } icon: {
+                                Image(systemName: "star.fill")
+                            }
+                        }
+                        .tint(.resicloGreen1)
+                        .padding(.horizontal)
+                        .padding(.vertical, 8)
+                        .background {
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color.gray.opacity(0.1))
+                        }
                     }
-                    .transition(.move(edge: .leading))
-                    //.animation(.easeInOut, value: filteredWastes)
+                    .padding()
+                    .background(.white)
+                    
+                    Divider()
+                    
+                    // Waste List
+                    ScrollView {
+                        LazyVStack(spacing: 12) {
+                            ForEach(filteredWastes) { waste in
+                                NavigationLink(destination: WasteLDetail(waste: waste)) {
+                                    WasteLRow(waste: waste)
+                                        .padding(.horizontal)
+                                        .background {
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .fill(.white)
+                                                .shadow(color: .black.opacity(0.05), radius: 5, y: 2)
+                                        }
+                                }
+                                .buttonStyle(.plain)
+                                .transition(.move(edge: .leading))
+                            }
+                        }
+                        .padding()
+                    }
                 }
             }
-            .background(
-                LinearGradient(gradient: Gradient(colors: [Color("ResicloGreen1"), Color("ResicloGreen2")]), startPoint: .top, endPoint: .bottom)
-            )
-            .navigationTitle("Tipos de desechos")
+            .navigationTitle("Tipos de Desechos")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    Text("Tipos de desechos")
-                        .font(.headline)
-                        .foregroundColor(Color("ResicloGreen1"))
+                    HStack {
+                        Image(systemName: "leaf.circle.fill")
+                            .foregroundStyle(.resicloGreen1)
+                        Text("Tipos de Desechos")
+                            .font(.headline)
+                            .foregroundStyle(.resicloGreen1)
+                    }
                 }
             }
-            .tint(Color("ResicloGreen1"))
         }
     }
 }
 
+// Preview
 #Preview {
-    WasteLList().environment(ModelData())
+    WasteLList()
+        .environment(ModelData())
 }
-
-
