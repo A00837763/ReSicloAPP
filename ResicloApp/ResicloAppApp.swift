@@ -14,6 +14,7 @@ struct ResicloAppApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     let container: ModelContainer
     @State private var mapViewModel: MapViewModel
+    @State private var modelData = ModelData()
     
     init() {
         do {
@@ -38,6 +39,7 @@ struct ResicloAppApp: App {
             ContentView()
                 .environment(mapViewModel)
                 .modelContainer(container)
+                .environment(modelData)
         }
     }
 }

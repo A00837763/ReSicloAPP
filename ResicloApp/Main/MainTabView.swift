@@ -12,6 +12,8 @@ struct MainTabView: View {
     )
     @Environment(MapViewModel.self) private var vm
     @Environment(\.modelContext) private var modelContext
+    @Environment(ModelData.self) private var modelData
+
     
     private let locationManager = LocationManager()
     
@@ -23,7 +25,7 @@ struct MainTabView: View {
                 }
                 .tag(0)
             
-            HomeView(selectedTab: $selectedTab)  // Replace with ScanView when available
+            HomeView(selectedTab: $selectedTab)  
                 .tabItem {
                     Label("Scan", systemImage: "qrcode.viewfinder")
                 }
@@ -35,7 +37,7 @@ struct MainTabView: View {
                 }
                 .tag(2)
             
-            HomeView(selectedTab: $selectedTab) // Replace with SearchView when available
+            WasteLList()
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
