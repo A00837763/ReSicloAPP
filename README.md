@@ -102,7 +102,12 @@ Este proyecto es con fines eductaivos, no de lucro
 
 ## 👥 Equipo
 
-- Cuatro Cuatro Ojos
+- Cuatro Cuatro Ojos conformado por:
+- Santiago Sánchez Reyes
+- Hugo Ochoa Lopez Portillo
+- Diego de Jesús Esparza Ruiz
+- Ernesto André González Castro
+- Luis Gerardo Juárez García
 
 ## 🙏 Agradecimientos
 
