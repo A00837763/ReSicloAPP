@@ -1,9 +1,6 @@
-# **ReSicloAPP**
-**DONDE JUNTOS SÍ RECICLAMOS**
+# ResicloAPP 🌱♻️
 
 Repositorio para el desarrollo de la app **Reciclo** en la clase **TC2007B**.
-
-# ResicloAPP 🌱♻️
 
 Una aplicación iOS nativa dedicada a promover y facilitar el reciclaje responsable.
 
