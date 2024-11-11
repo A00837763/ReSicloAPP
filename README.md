@@ -74,7 +74,6 @@ open ResicloAPP.xcworkspace
 Configura las credenciales de la API en `Config.swift`:
 ```swift
 struct APIConfig {
-    static let ecolanaAPIKey = "TU_API_KEY"
     static let baseURL = "https://api.ecolana.mx"
 }
 ```
@@ -99,20 +98,14 @@ Las contribuciones son bienvenidas. Por favor:
 
 ## 📄 Licencia
 
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](LICENSE.md) para más detalles.
+Este proyecto es con fines eductaivos, no de lucro
 
 ## 👥 Equipo
 
-- Tu Nombre - Desarrollo iOS - [@tuusuario](https://github.com/tuusuario)
+- Cuatro Cuatro Ojos
 
 ## 🙏 Agradecimientos
 
 - Ecolana por proporcionar acceso a su API
 - La comunidad de reciclaje por su retroalimentación
 - Apple Developer Academy por su apoyo
-
-## 📞 Contacto
-
-- Email: tu@email.com
-- Twitter: [@resicloapp](https://twitter.com/resicloapp)
-- Website: [www.resicloapp.com](https://www.resicloapp.com)
