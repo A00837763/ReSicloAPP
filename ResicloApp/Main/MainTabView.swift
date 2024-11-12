@@ -25,7 +25,7 @@ struct MainTabView: View {
                 }
                 .tag(0)
             
-            HomeView(selectedTab: $selectedTab)  
+            CameraView()
                 .tabItem {
                     Label("Scan", systemImage: "qrcode.viewfinder")
                 }
