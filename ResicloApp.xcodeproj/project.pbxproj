@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		430B88792CDD411A0070C0EA /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 430B88782CDD411A0070C0EA /* SDWebImageSwiftUI */; };
+		9C5A64462CE9771900AB8383 /* MijickCameraView in Frameworks */ = {isa = PBXBuildFile; productRef = 9C5A64452CE9771900AB8383 /* MijickCameraView */; };
 		9C8E347B2CE2E0BE00BA9F73 /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9C8E347A2CE2E0BE00BA9F73 /* SwiftEntryKit */; };
 		DE4E0EEE2CDC1CEE00880A2B /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = DE4E0EED2CDC1CEE00880A2B /* GoogleSignIn */; };
 		DE4E0EF02CDC1CEE00880A2B /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DE4E0EEF2CDC1CEE00880A2B /* GoogleSignInSwift */; };
@@ -53,6 +54,7 @@
 				430B88792CDD411A0070C0EA /* SDWebImageSwiftUI in Frameworks */,
 				DE4E0EFD2CDC1D6500880A2B /* FirebaseMessaging in Frameworks */,
 				DE4E0EF92CDC1D6500880A2B /* FirebaseDatabase in Frameworks */,
+				9C5A64462CE9771900AB8383 /* MijickCameraView in Frameworks */,
 				DE4E0EFF2CDC1D6500880A2B /* FirebaseStorage in Frameworks */,
 				DE4E0EEE2CDC1CEE00880A2B /* GoogleSignIn in Frameworks */,
 				DE4E0EF02CDC1CEE00880A2B /* GoogleSignInSwift in Frameworks */,
@@ -114,6 +116,7 @@
 				DE4E0EFE2CDC1D6500880A2B /* FirebaseStorage */,
 				430B88782CDD411A0070C0EA /* SDWebImageSwiftUI */,
 				9C8E347A2CE2E0BE00BA9F73 /* SwiftEntryKit */,
+				9C5A64452CE9771900AB8383 /* MijickCameraView */,
 			);
 			productName = ResicloApp;
 			productReference = DEBE37682CC07AB200B2E3E5 /* ResicloApp.app */;
@@ -148,6 +151,7 @@
 				DE4E0EF12CDC1D6500880A2B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				430B88772CDD411A0070C0EA /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				9C8E34792CE2E0BE00BA9F73 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */,
+				9C5A64442CE9771900AB8383 /* XCRemoteSwiftPackageReference "CameraView" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = DEBE37692CC07AB200B2E3E5 /* Products */;
@@ -311,8 +315,11 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ResicloApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "RecicloApp necesita acceso a la cámara para capturar fotos";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to show nearby recycling centers.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show nearby recycling centers.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "RecicloApp necesita acceso a la cámara para capturar fotos";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "RecicloApp nplicación necesita guardar imágenes en tu galería";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -343,8 +350,11 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ResicloApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "RecicloApp necesita acceso a la cámara para capturar fotos";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to show nearby recycling centers.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show nearby recycling centers.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "RecicloApp necesita acceso a la cámara para capturar fotos";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "RecicloApp nplicación necesita guardar imágenes en tu galería";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -395,6 +405,14 @@
 				minimumVersion = 3.1.3;
 			};
 		};
+		9C5A64442CE9771900AB8383 /* XCRemoteSwiftPackageReference "CameraView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Mijick/CameraView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
 		9C8E34792CE2E0BE00BA9F73 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/huri000/SwiftEntryKit";
@@ -426,6 +444,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 430B88772CDD411A0070C0EA /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		9C5A64452CE9771900AB8383 /* MijickCameraView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9C5A64442CE9771900AB8383 /* XCRemoteSwiftPackageReference "CameraView" */;
+			productName = MijickCameraView;
 		};
 		9C8E347A2CE2E0BE00BA9F73 /* SwiftEntryKit */ = {
 			isa = XCSwiftPackageProductDependency;

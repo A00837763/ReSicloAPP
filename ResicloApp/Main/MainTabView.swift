@@ -14,7 +14,6 @@ struct MainTabView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(ModelData.self) private var modelData
 
-    
     private let locationManager = LocationManager()
     
     var body: some View {
@@ -25,7 +24,7 @@ struct MainTabView: View {
                 }
                 .tag(0)
             
-            CameraView()
+            CameraViewWrapper()
                 .tabItem {
                     Label("Scan", systemImage: "qrcode.viewfinder")
                 }
@@ -46,6 +45,7 @@ struct MainTabView: View {
         .tint(Color("ResicloGreen2"))
     }
 }
+
 
 #Preview {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
