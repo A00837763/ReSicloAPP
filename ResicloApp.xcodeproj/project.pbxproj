@@ -17,6 +17,7 @@
 		DE4E0EFB2CDC1D6500880A2B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = DE4E0EFA2CDC1D6500880A2B /* FirebaseFirestore */; };
 		DE4E0EFD2CDC1D6500880A2B /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = DE4E0EFC2CDC1D6500880A2B /* FirebaseMessaging */; };
 		DE4E0EFF2CDC1D6500880A2B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = DE4E0EFE2CDC1D6500880A2B /* FirebaseStorage */; };
+		DEE51C402CEAE2DF0037304A /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = DEE51C3F2CEAE2DF0037304A /* SwiftEntryKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 				DE4E0EF32CDC1D6500880A2B /* FirebaseAnalytics in Frameworks */,
 				DE4E0EF52CDC1D6500880A2B /* FirebaseAuth in Frameworks */,
 				DE4E0EFB2CDC1D6500880A2B /* FirebaseFirestore in Frameworks */,
+				DEE51C402CEAE2DF0037304A /* SwiftEntryKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +113,7 @@
 				DE4E0EFC2CDC1D6500880A2B /* FirebaseMessaging */,
 				DE4E0EFE2CDC1D6500880A2B /* FirebaseStorage */,
 				430B88782CDD411A0070C0EA /* SDWebImageSwiftUI */,
+				DEE51C3F2CEAE2DF0037304A /* SwiftEntryKit */,
 			);
 			productName = ResicloApp;
 			productReference = DEBE37682CC07AB200B2E3E5 /* ResicloApp.app */;
@@ -144,6 +147,7 @@
 				DE4E0EEC2CDC1CEE00880A2B /* XCRemoteSwiftPackageReference "GoogleSignIn-ios" */,
 				DE4E0EF12CDC1D6500880A2B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				430B88772CDD411A0070C0EA /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				DEE51C3E2CEAE2DF0037304A /* XCRemoteSwiftPackageReference "SwiftEntryKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = DEBE37692CC07AB200B2E3E5 /* Products */;
@@ -307,8 +311,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ResicloApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need ypur camera to scan products";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to show nearby recycling centers.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show nearby recycling centers.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Access to your phptps for scaning produvts";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -319,7 +325,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.santiagoschz.ResicloApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.santiagoschz2024.ResicloApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -339,8 +345,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ResicloApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need ypur camera to scan products";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to show nearby recycling centers.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show nearby recycling centers.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Access to your phptps for scaning produvts";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -351,7 +359,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.santiagoschz.ResicloApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.santiagoschz2024.ResicloApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -407,6 +415,14 @@
 				minimumVersion = 11.4.0;
 			};
 		};
+		DEE51C3E2CEAE2DF0037304A /* XCRemoteSwiftPackageReference "SwiftEntryKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/huri000/SwiftEntryKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -459,6 +475,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DE4E0EF12CDC1D6500880A2B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		DEE51C3F2CEAE2DF0037304A /* SwiftEntryKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DEE51C3E2CEAE2DF0037304A /* XCRemoteSwiftPackageReference "SwiftEntryKit" */;
+			productName = SwiftEntryKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
