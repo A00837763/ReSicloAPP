@@ -1,0 +1,6 @@
+{
+  "MLModelVersionStringKey" : "8.3.29",
+  "MLModelDescriptionKey" : "Ultralytics YOLO11n model trained on \/content\/datasets\/waste-detection-9\/data.yaml",
+  "MLModelAuthorKey" : "Ultralytics",
+  "MLModelLicenseKey" : "AGPL-3.0 License (https:\/\/ultralytics.com\/license)"
+}
