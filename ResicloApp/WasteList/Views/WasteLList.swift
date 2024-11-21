@@ -1,14 +1,18 @@
 import SwiftUI
+import SwiftData
 
 struct WasteLList: View {
-    @Environment(ModelData.self) private var modelData
+    @Environment(\.modelContext) private var context
+    @Query var wastes: [WasteL]
     @State private var showFavoritesOnly = false
+    @State private var searchText = "" // Campo de búsqueda
 
     var filteredWastes: [WasteL] {
-        let wastes = modelData.wastes.filter { waste in
-            (!showFavoritesOnly || waste.isFavorite)
+        wastes.filter { waste in
+            let matchesSearch = searchText.isEmpty || waste.name.localizedCaseInsensitiveContains(searchText)
+            let matchesFavorites = !showFavoritesOnly || waste.isFavorite
+            return matchesSearch && matchesFavorites
         }
-        return Array(wastes)
     }
 
     var body: some View {
@@ -18,29 +22,34 @@ struct WasteLList: View {
                     .ignoresSafeArea()
                 
                 VStack(spacing: 0) {
-                    VStack(spacing: 16) {
-                        Toggle(isOn: $showFavoritesOnly) {
-                            Label {
-                                Text("Mostrar Favoritos")
-                                    .font(.headline)
-                            } icon: {
-                                Image(systemName: "star.fill")
-                            }
-                        }
-                        .tint(.resicloGreen1)
+                    // Campo de Búsqueda
+                    TextField("Buscar por nombre", text: $searchText)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.horizontal)
                         .padding(.vertical, 8)
                         .background {
                             RoundedRectangle(cornerRadius: 12)
                                 .fill(Color.gray.opacity(0.1))
                         }
+                        .padding()
+
+                    // Toggle para mostrar favoritos
+                    Toggle(isOn: $showFavoritesOnly) {
+                        Label("Mostrar Favoritos", systemImage: "star.fill")
+                            .font(.headline)
+                    }
+                    .tint(.resicloGreen1)
+                    .padding(.horizontal)
+                    .padding(.vertical, 8)
+                    .background {
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(Color.gray.opacity(0.1))
                     }
                     .padding()
-                    .background(.white)
-                    
+
                     Divider()
-                    
-                    // Waste List
+
+                    // Lista de residuos filtrados
                     ScrollView {
                         LazyVStack(spacing: 12) {
                             ForEach(filteredWastes) { waste in
@@ -78,8 +87,25 @@ struct WasteLList: View {
     }
 }
 
-// Preview
+
 #Preview {
-    WasteLList()
-        .environment(ModelData())
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: WasteL.self, configurations: config)
+    let context = container.mainContext
+
+    // Cargar datos reales desde JSON al contexto
+    if let url = Bundle.main.url(forResource: "wasteLData", withExtension: "json"),
+       let data = try? Data(contentsOf: url) {
+        let decoder = JSONDecoder()
+        if let wastes = try? decoder.decode([WasteL].self, from: data) {
+            for waste in wastes {
+                context.insert(waste)
+            }
+        }
+    }
+
+    return WasteLList()
+        .modelContainer(container)
 }
+
+

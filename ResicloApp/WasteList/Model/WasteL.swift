@@ -6,20 +6,38 @@
 //
 import Foundation
 import SwiftUI
+import SwiftData
 
-struct WasteL: Identifiable, Codable {
-    let id: String
-    let name: String
-    let description: String
+@Model
+class WasteL: Decodable {
+    @Attribute(.unique) var id: String
+    var name: String
+    var wasteDescription: String
     var isFavorite: Bool
-    let process: String
-    let icon: String?  // Make it optional to handle null values in JSON
+    var process: String
+    var icon: String?
 
-    // Computed property for AsyncImage loading the icon URL
-    var iconURL: URL? {
-        guard let icon = icon, !icon.isEmpty else { return nil } // If icon is null or empty, return nil
-        return URL(string: icon)
+    init(id: String, name: String, wasteDescription: String, isFavorite: Bool, process: String, icon: String?) {
+        self.id = id
+        self.name = name
+        self.wasteDescription = wasteDescription
+        self.isFavorite = isFavorite
+        self.process = process
+        self.icon = icon
     }
-    
-    
+
+    // Decodable Conformance
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(String.self, forKey: .id)
+        self.name = try container.decode(String.self, forKey: .name)
+        self.wasteDescription = try container.decode(String.self, forKey: .wasteDescription)
+        self.isFavorite = try container.decode(Bool.self, forKey: .isFavorite)
+        self.process = try container.decode(String.self, forKey: .process)
+        self.icon = try? container.decode(String.self, forKey: .icon)
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case id, name, wasteDescription = "description", isFavorite, process, icon
+    }
 }

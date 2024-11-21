@@ -1,30 +1,27 @@
 import SwiftUI
+import SwiftData
 
 struct WasteLDetail: View {
-    @Environment(ModelData.self) var modelData
+    @Query(FetchDescriptor<WasteL>()) var wastes: [WasteL]
     @Environment(\.dismiss) private var dismiss
     var waste: WasteL
     @State private var showFullDescription = false
     @State private var selectedTab = "description"
-    
-    var wasteIndex: Int {
-        modelData.wastes.firstIndex(where: { $0.id == waste.id })!
-    }
-    
+
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
                 // Header Section with Image
                 headerSection
-                
+
                 // Content Sections
                 VStack(spacing: 24) {
                     // Title and Favorite Section
                     titleSection
-                    
+
                     // Tab Selection
                     tabSelection
-                    
+
                     // Content Based on Selected Tab
                     tabContent
                         .transition(.opacity)
@@ -42,7 +39,7 @@ struct WasteLDetail: View {
             }
         }
     }
-    
+
     private var headerSection: some View {
         ZStack(alignment: .bottom) {
             // Background with gradient
@@ -53,9 +50,9 @@ struct WasteLDetail: View {
                     endPoint: .bottomTrailing
                 ))
                 .frame(height: 240)
-            
+
             // Image
-            if let iconURL = waste.iconURL {
+            if let iconString = waste.icon, let iconURL = URL(string: iconString) {
                 AsyncImage(url: iconURL) { image in
                     image
                         .resizable()
@@ -78,20 +75,20 @@ struct WasteLDetail: View {
             }
         }
     }
-    
+
     private var titleSection: some View {
         VStack(spacing: 16) {
             HStack(spacing: 16) {
                 Text(waste.name)
                     .font(.title2.bold())
-                
+
                 FavoriteButton(isSet: Binding(
-                    get: { modelData.wastes[wasteIndex].isFavorite },
-                    set: { modelData.wastes[wasteIndex].isFavorite = $0 }
+                    get: { waste.isFavorite },
+                    set: { waste.isFavorite = $0 }
                 ))
                 .font(.title2)
             }
-            
+
             // Category Tags
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8) {
@@ -103,7 +100,7 @@ struct WasteLDetail: View {
         }
         .padding(.top, 40)
     }
-    
+
     private func categoryTag(icon: String, text: String) -> some View {
         HStack(spacing: 4) {
             Image(systemName: icon)
@@ -117,7 +114,7 @@ struct WasteLDetail: View {
         .foregroundStyle(.resicloGreen1)
         .clipShape(Capsule())
     }
-    
+
     private var tabSelection: some View {
         HStack(spacing: 0) {
             tabButton(title: "Descripción", tag: "description")
@@ -128,7 +125,7 @@ struct WasteLDetail: View {
         .background(Color.gray.opacity(0.1))
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
-    
+
     private func tabButton(title: String, tag: String) -> some View {
         Button {
             withAnimation { selectedTab = tag }
@@ -145,7 +142,7 @@ struct WasteLDetail: View {
                 .foregroundStyle(selectedTab == tag ? .resicloGreen1 : .gray)
         }
     }
-    
+
     @ViewBuilder
     private var tabContent: some View {
         switch selectedTab {
@@ -159,12 +156,12 @@ struct WasteLDetail: View {
             EmptyView()
         }
     }
-    
+
     private var descriptionSection: some View {
         VStack(alignment: .leading, spacing: 16) {
             sectionTitle("Acerca de \(waste.name)")
-            
-            Text(waste.description)
+
+            Text(waste.wasteDescription)
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
                 .lineSpacing(4)
@@ -177,11 +174,11 @@ struct WasteLDetail: View {
                 .shadow(color: .black.opacity(0.05), radius: 10, x: 0, y: 4)
         )
     }
-    
+
     private var processSection: some View {
         VStack(alignment: .leading, spacing: 16) {
             sectionTitle("Proceso de Reciclaje")
-            
+
             VStack(alignment: .leading, spacing: 20) {
                 processStep(description: waste.process)
             }
@@ -194,11 +191,11 @@ struct WasteLDetail: View {
                 .shadow(color: .black.opacity(0.05), radius: 10, x: 0, y: 4)
         )
     }
-    
+
     private var tipsSection: some View {
         VStack(alignment: .leading, spacing: 16) {
             sectionTitle("Tips de Reciclaje")
-            
+
             VStack(alignment: .leading, spacing: 12) {
                 tipItem(icon: "lightbulb.fill", tip: "Aplasta el material para reducir espacio")
                 tipItem(icon: "exclamationmark.triangle.fill", tip: "Retira etiquetas y adhesivos")
@@ -213,39 +210,48 @@ struct WasteLDetail: View {
                 .shadow(color: .black.opacity(0.05), radius: 10, x: 0, y: 4)
         )
     }
-    
+
     private func sectionTitle(_ text: String) -> some View {
         Text(text)
             .font(.headline)
             .foregroundStyle(.resicloGreen1)
     }
-    
+
     private func processStep(description: String) -> some View {
-            
-            VStack(alignment: .leading, spacing: 4) {
-                Text(description)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-            }
+        VStack(alignment: .leading, spacing: 4) {
+            Text(description)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
         }
     }
-    
+
     private func tipItem(icon: String, tip: String) -> some View {
         HStack(spacing: 12) {
             Image(systemName: icon)
                 .font(.subheadline)
                 .foregroundStyle(.resicloGreen1)
-            
+
             Text(tip)
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
         }
+    }
 }
 
 #Preview {
-    let modelData = ModelData()
-    return NavigationStack {
-        WasteLDetail(waste: modelData.wastes[0])
-            .environment(modelData)
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: WasteL.self, configurations: config)
+    let context = container.mainContext
+
+    // Cargar datos reales si están disponibles
+    if let firstWaste = try? context.fetch(FetchDescriptor<WasteL>()).first {
+        return NavigationStack {
+            WasteLDetail(waste: firstWaste)
+                .modelContainer(container)
+        }
+    } else {
+        fatalError("No se pudieron cargar datos para la vista previa.")
     }
 }
+
+
