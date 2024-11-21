@@ -23,12 +23,16 @@ struct ResicloAppApp: App {
                 for: StoredMarker.self,
                 StoredWasteReference.self,
                 StoredWasteInfo.self,
+                WasteL.self,
                 configurations: ModelConfiguration(isStoredInMemoryOnly: false)
             )
             
             // Initialize mapViewModel with the container's modelContext
             let context = container.mainContext
             _mapViewModel = State(initialValue: MapViewModel(modelContext: context))
+            
+            // Para inicializar los datos desde el JSON
+            modelData.initializeData(context: context)
             
         } catch {
             fatalError("Failed to create ModelContainer: \(error)")

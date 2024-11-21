@@ -6,30 +6,43 @@
 //
 
 import Foundation
+import SwiftData
 
 @Observable
 class ModelData {
-    var wastes: [WasteL] = load("wasteLData.json")
+    func initializeData(context: ModelContext) {
+        loadData(context: context) // Carga datos desde el JSON y los guarda
+    }
+
 }
 
-func load<T: Decodable>(_ filename: String) -> T {
-    let data: Data
-
-    guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
-    else {
-        fatalError("Couldn't find \(filename) in main bundle.")
+func loadData(context: ModelContext) {
+    guard let url = Bundle.main.url(forResource: "wasteLData.json", withExtension: nil) else {
+        fatalError("No se encontró el archivo JSON.")
     }
 
     do {
-        data = try Data(contentsOf: file)
-    } catch {
-        fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
-    }
-
-    do {
+        let data = try Data(contentsOf: url)
         let decoder = JSONDecoder()
-        return try decoder.decode(T.self, from: data)
+        let wastes = try decoder.decode([WasteL].self, from: data)
+
+        let descriptor = FetchDescriptor<WasteL>()
+        let existingWastes = try context.fetch(descriptor)
+
+        print("Datos existentes: \(existingWastes.count)") // Verifica si hay datos existentes
+
+        for waste in wastes {
+            if existingWastes.contains(where: { $0.id == waste.id }) {
+                continue // Evita duplicados
+            }
+            context.insert(waste)
+        }
+
+        try context.save() // Guarda los datos
+
+        print("Datos cargados correctamente: \(wastes.count)") // Confirma que los datos se cargaron
     } catch {
-        fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
+        fatalError("Error al cargar el JSON: \(error)")
     }
 }
+

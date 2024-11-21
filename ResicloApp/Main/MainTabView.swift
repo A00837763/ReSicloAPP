@@ -46,14 +46,31 @@ struct MainTabView: View {
     }
 }
 
-
 #Preview {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: StoredMarker.self, StoredWasteReference.self, StoredWasteInfo.self, configurations: config)
+    let container = try! ModelContainer(
+        for: StoredMarker.self,
+        StoredWasteReference.self,
+        StoredWasteInfo.self,
+        WasteL.self, // Incluye el modelo WasteL
+        configurations: config
+    )
     let viewModel = MapViewModel(modelContext: container.mainContext)
+    
+    // Cargar datos desde JSON
+    if let url = Bundle.main.url(forResource: "wasteLData", withExtension: "json"),
+       let data = try? Data(contentsOf: url) {
+        let decoder = JSONDecoder()
+        if let wastes = try? decoder.decode([WasteL].self, from: data) {
+            for waste in wastes {
+                container.mainContext.insert(waste)
+            }
+        }
+    }
     
     return MainTabView()
         .modelContainer(container)
         .environment(viewModel)
         .environment(ModelData())
 }
+
