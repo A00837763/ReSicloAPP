@@ -5,23 +5,24 @@ import SwiftData
 struct MapView: View {
     @Environment(MapViewModel.self) private var vm
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.dismissSearch) private var dismissSearch
     @State private var searchText = ""
     @State private var currentSpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
     @State private var isPresented = false
-    @State private var selectedMarker: CollectionMarker?
+    @State private var selectedMarker: RecyclingCenter?
     @State private var showingSearchResults = false
-    @State private var position: MapCameraPosition = .region(
-        MKCoordinateRegion(
-            center: .monterrey,
-            span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
-        )
-    )
+    @FocusState private var searchIsFocused: Bool
+    @State private var position: MapCameraPosition = .camera(MapCamera(
+        centerCoordinate: .monterrey,
+        distance: 1000,
+        heading: 0, pitch: 0
+    ))
     
     var locationManager: LocationManager
 
-    var filteredMarkers: [CollectionMarker] {
-        guard !searchText.isEmpty else { return vm.filteredMarkers }
-        return vm.filteredMarkers.filter {
+    var filteredMarkers: [RecyclingCenter] {
+        guard !searchText.isEmpty else { return vm.filteredCenters }
+        return vm.filteredCenters.filter {
             $0.name.localizedCaseInsensitiveContains(searchText)
         }
     }
@@ -40,27 +41,26 @@ struct MapView: View {
                 showingSearchResults = true
             }
             .sheet(isPresented: $isPresented, onDismiss: {
-                vm.selectedMarker = nil
+                vm.selectedCenter = nil
                 selectedMarker = nil
             }) {
-                if let marker = vm.selectedMarker {
-                    MarkerDetailView(marker: marker)
+                if let marker = vm.selectedCenter {
+                    CenterDetailView(center: marker)
                         .environment(\.modelContext, modelContext)
                 }
             }
             .task {
-                if vm.markers.isEmpty {
-                    await vm.fetchMarkers()
+                if vm.centers.isEmpty {
+                    await vm.fetchCenters()
                 }
             }
-            .onAppear(){
+            .onAppear() {
                 if let userLocation = locationManager.currentLocation {
-                    position = .region(
-                        MKCoordinateRegion(
-                            center: userLocation,
-                            span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
-                        )
-                    )
+                    position = .camera(MapCamera(
+                        centerCoordinate: userLocation,
+                        distance: 800,
+                        heading: 0, pitch: 0
+                    ))
                 }
             }
         }
@@ -69,7 +69,6 @@ struct MapView: View {
     private var loadingLayer: some View {
         ZStack {
             Color.white.opacity(0.50)
-                
             
             VStack(spacing: 20) {
                 Image(systemName: "leaf.circle.fill")
@@ -105,7 +104,7 @@ struct MapView: View {
     
     private var mapLayer: some View {
         Map(position: $position, selection: $selectedMarker) {
-            ForEach(vm.filteredMarkers) { marker in
+            ForEach(vm.filteredCenters) { marker in
                 Marker(marker.name, systemImage: "leaf.circle.fill", coordinate: marker.coordinate)
                     .tint(.resicloGreen1)
                     .tag(marker)
@@ -121,6 +120,7 @@ struct MapView: View {
                 }
             }
         }
+        .ignoresSafeArea(.keyboard)
         .mapStyle(.standard)
         .mapControls(){
             MapUserLocationButton()
@@ -129,17 +129,19 @@ struct MapView: View {
             currentSpan = context.region.span
         }
         .onChange(of: selectedMarker) { oldValue, newValue in
+            dismissKeyboard()
             if let marker = newValue {
-                if let updatedMarker = vm.markers.first(where: { $0.id == marker.id }) {
-                    vm.selectedMarker = updatedMarker
+                if let updatedMarker = vm.centers.first(where: { $0.id == marker.id }) {
+                    vm.selectedCenter = updatedMarker
                     withAnimation(.easeInOut) {
-                        let adjustedCoordinate = CLLocationCoordinate2D(
-                            latitude: marker.coordinate.latitude - 0.0003,
+                        let lookAtPoint = CLLocationCoordinate2D(
+                            latitude: marker.coordinate.latitude - 0.0005,
                             longitude: marker.coordinate.longitude
                         )
-                        position = .region(MKCoordinateRegion(
-                            center: adjustedCoordinate,
-                            span: currentSpan
+                        position = .camera(MapCamera(
+                            centerCoordinate: lookAtPoint,
+                            distance: 800,
+                            heading: 0, pitch: 0
                         ))
                     }
                     isPresented = true
@@ -147,7 +149,7 @@ struct MapView: View {
             }
         }
     }
-
+    
     @ViewBuilder
     private var searchResultsLayer: some View {
         if !searchText.isEmpty && showingSearchResults {
@@ -156,6 +158,7 @@ struct MapView: View {
                 searchText: $searchText,
                 showingResults: $showingSearchResults
             ) { marker in
+                searchIsFocused = false
                 selectMarker(marker)
                 searchText = ""
                 showingSearchResults = false
@@ -168,31 +171,98 @@ struct MapView: View {
         }
     }
     
-    private func selectMarker(_ marker: CollectionMarker) {
-        if let updatedMarker = vm.markers.first(where: { $0.id == marker.id }) {
-            selectedMarker = updatedMarker
-            vm.selectedMarker = updatedMarker
-            withAnimation(.easeInOut) {
-                let adjustedCoordinate = CLLocationCoordinate2D(
-                    latitude: marker.coordinate.latitude - 0.0003,
-                    longitude: marker.coordinate.longitude
-                )
-                position = .region(MKCoordinateRegion(
-                    center: adjustedCoordinate,
-                    span: currentSpan
-                ))
-            }
-            isPresented = true
-        }
+    private func selectMarker(_ marker: RecyclingCenter) {
+         if let updatedMarker = vm.centers.first(where: { $0.id == marker.id }) {
+             dismissKeyboard()
+             selectedMarker = updatedMarker
+             vm.selectedCenter = updatedMarker
+             withAnimation(.easeInOut) {
+                 let lookAtPoint = CLLocationCoordinate2D(
+                     latitude: marker.coordinate.latitude - 0.0005,
+                     longitude: marker.coordinate.longitude
+                 )
+                 position = .camera(MapCamera(
+                     centerCoordinate: lookAtPoint,
+                     distance: 1000,
+                     heading: 0, pitch: 0
+                 ))
+             }
+             isPresented = true
+         }
+     }
+    
+    private func dismissKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 
+
 #Preview {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: StoredMarker.self, StoredWasteReference.self, StoredWasteInfo.self, configurations: config)
-    let viewModel = MapViewModel(modelContext: container.mainContext)
+    let container = try! ModelContainer(for: StoredRecyclingCenter.self, configurations: config)
     
-    return MapView(locationManager: LocationManager())
-        .modelContainer(container)
+    let sampleCenters = [
+        RecyclingCenter(
+            centerId: 1,
+            name: "Centro de Reciclaje MTY",
+            desc: "Centro principal de reciclaje",
+            address: "Av. Constitución 123",
+            city: "Monterrey",
+            state: "Nuevo León",
+            country: "México",
+            postalCode: "64000",
+            latitude: 25.6867,
+            longitude: -100.3161,
+            phone: "81-1234-5678",
+            email: "contacto@reciclaje.com",
+            website: "www.reciclaje.com",
+            operatingHours: [
+                OperatingHours(day: "Lunes", openingTime: "9:00", closingTime: "18:00"),
+                OperatingHours(day: "Martes", openingTime: "9:00", closingTime: "18:00")
+            ],
+            wasteCategories: [
+                WasteCategory(categoryId: 1, name: "Papel", desc: "Todo tipo de papel", process: "Separar", tips: "Mantener seco"),
+                WasteCategory(categoryId: 2, name: "Plástico", desc: "PET y HDPE", process: "Limpiar", tips: "Aplastar")
+            ]
+        ),
+        RecyclingCenter(
+            centerId: 2,
+            name: "EcoRecicla San Pedro",
+            desc: "Centro especializado en plásticos",
+            address: "Av. Vasconcelos 456",
+            city: "San Pedro",
+            state: "Nuevo León",
+            country: "México",
+            postalCode: "66220",
+            latitude: 25.6545,
+            longitude: -100.3424,
+            phone: "81-8765-4321",
+            email: "info@ecorecicla.com",
+            website: "www.ecorecicla.com",
+            operatingHours: [
+                OperatingHours(day: "Lunes", openingTime: "8:00", closingTime: "17:00"),
+                OperatingHours(day: "Martes", openingTime: "8:00", closingTime: "17:00")
+            ],
+            wasteCategories: [
+                WasteCategory(categoryId: 1, name: "Plástico", desc: "Todo tipo de plástico", process: "Lavar", tips: "Retirar etiquetas"),
+                WasteCategory(categoryId: 2, name: "Vidrio", desc: "Botellas y frascos", process: "Separar por color", tips: "No romper")
+            ]
+        )
+    ]
+    
+    // Create and configure MapViewModel
+    let viewModel = MapViewModel(modelContext: container.mainContext)
+    viewModel.centers = sampleCenters
+    viewModel.filteredCenters = sampleCenters
+    
+    // Create LocationManager with mock location
+    let locationManager = LocationManager()
+    locationManager.currentLocation = CLLocationCoordinate2D(
+        latitude: 25.6866,
+        longitude: -100.3161
+    )
+    
+    return MapView(locationManager: locationManager)
         .environment(viewModel)
+        .modelContainer(container)
 }

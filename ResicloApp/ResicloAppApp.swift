@@ -1,10 +1,3 @@
-//
-//  ResicloAppApp.swift
-//  ResicloApp
-//
-//  Created by Santiago Sánchez Reyes on 16/10/24.
-//
-
 import SwiftUI
 import FirebaseCore
 import SwiftData
@@ -20,9 +13,9 @@ struct ResicloAppApp: App {
         do {
             // Create container with the models we'll store
             container = try ModelContainer(
-                for: StoredMarker.self,
-                StoredWasteReference.self,
-                StoredWasteInfo.self,
+                for: StoredRecyclingCenter.self,
+                StoredOperatingHours.self,
+                StoredWasteCategory.self,
                 configurations: ModelConfiguration(isStoredInMemoryOnly: false)
             )
             
@@ -34,6 +27,7 @@ struct ResicloAppApp: App {
             fatalError("Failed to create ModelContainer: \(error)")
         }
     }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -43,5 +37,3 @@ struct ResicloAppApp: App {
         }
     }
 }
-    
-

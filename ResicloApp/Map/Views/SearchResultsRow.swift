@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SearchResultRow: View {
-    let marker: CollectionMarker
+    let marker: RecyclingCenter
     let onSelect: () -> Void
     @State private var isPressed = false
     

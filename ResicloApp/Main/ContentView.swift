@@ -24,9 +24,9 @@ struct ContentView: View {
 #Preview {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(
-        for: StoredMarker.self,
-        StoredWasteReference.self,
-        StoredWasteInfo.self,
+        for: StoredRecyclingCenter.self,
+        StoredOperatingHours.self,
+        StoredWasteCategory.self,
         configurations: config
     )
     
@@ -35,5 +35,4 @@ struct ContentView: View {
     return ContentView()
         .modelContainer(container)
         .environment(viewModel)
-        .environment(ModelData())
 }
