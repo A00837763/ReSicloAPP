@@ -72,3 +72,4 @@ struct SearchResultsView: View {
         .padding(.vertical, 8)
     }
 }
+

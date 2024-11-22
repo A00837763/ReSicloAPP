@@ -7,7 +7,7 @@ struct HomeView: View {
     @State private var position: MapCameraPosition = .region(
         MKCoordinateRegion(
             center: .monterrey,
-            span: MKCoordinateSpan(latitudeDelta: 0.0005, longitudeDelta: 0.0005)
+            span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
         )
     )
     
