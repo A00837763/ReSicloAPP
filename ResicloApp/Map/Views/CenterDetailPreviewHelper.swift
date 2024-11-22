@@ -19,8 +19,8 @@ extension RecyclingCenter {
                 OperatingHours(day: "Martes", openingTime: "9:00", closingTime: "18:00")
             ],
             wasteCategories: [
-                WasteCategory(categoryId: 1, name: "Papel", desc: "Todo tipo de papel", process: "Separar", tips: "Mantener seco"),
-                WasteCategory(categoryId: 2, name: "Plástico", desc: "PET y HDPE", process: "Limpiar", tips: "Aplastar")
+                WasteCategory(categoryId: 1, name: "Papel", desc: "Todo tipo de papel", process: "Separar", tips: "Mantener seco", icon: nil),
+                WasteCategory(categoryId: 2, name: "Plástico", desc: "PET y HDPE", process: "Limpiar", tips: "Aplastar", icon: nil)
             ]
         )
     }
@@ -33,7 +33,9 @@ extension WasteCategory {
             name: "Papel",
             desc: "Todo tipo de papel",
             process: "Separar",
-            tips: "Mantener seco"
+            tips: "Mantener seco",
+            icon: nil
+            
         )
     }
 }

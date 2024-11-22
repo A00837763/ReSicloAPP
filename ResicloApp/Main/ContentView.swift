@@ -5,7 +5,6 @@ struct ContentView: View {
     @State private var showStartPage = true
     @Environment(\.modelContext) private var modelContext
     @Environment(MapViewModel.self) private var vm
-    @Environment(ModelData.self) private var modelData
     
     var body: some View {
         ZStack {

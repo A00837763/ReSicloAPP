@@ -9,27 +9,20 @@ import Foundation
 
 @Observable
 class ModelData {
-    var wastes: [WasteL] = load("wasteLData.json")
-}
-
-func load<T: Decodable>(_ filename: String) -> T {
-    let data: Data
-
-    guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
-    else {
-        fatalError("Couldn't find \(filename) in main bundle.")
-    }
-
-    do {
-        data = try Data(contentsOf: file)
-    } catch {
-        fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
-    }
-
-    do {
-        let decoder = JSONDecoder()
-        return try decoder.decode(T.self, from: data)
-    } catch {
-        fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
+    var categories: [WasteCategory] = []
+    var isLoading = false
+    private let baseURL = "http://127.0.0.1:8000/api"
+    
+    func fetchCategories() async {
+        isLoading = true
+        defer { isLoading = false }
+        
+        do {
+            let url = URL(string: "\(baseURL)/waste-categories")!
+            let (data, _) = try await URLSession.shared.data(from: url)
+            self.categories = try JSONDecoder().decode([WasteCategory].self, from: data)
+        } catch {
+            print("Error fetching categories: \(error)")
+        }
     }
 }

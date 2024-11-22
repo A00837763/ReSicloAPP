@@ -93,6 +93,7 @@ final class StoredWasteCategory {
     var desc: String
     var process: String
     var tips: String
+    var icon: String?
     
     init(from category: WasteCategory) {
         self.categoryId = category.categoryId
@@ -100,6 +101,7 @@ final class StoredWasteCategory {
         self.desc = category.desc
         self.process = category.process
         self.tips = category.tips
+        self.icon = category.icon
     }
     
     var toWasteCategory: WasteCategory {
@@ -108,7 +110,8 @@ final class StoredWasteCategory {
             name: name,
             desc: desc,
             process: process,
-            tips: tips
+            tips: tips,
+            icon: icon
         )
     }
 }
@@ -174,11 +177,15 @@ struct WasteCategory: Codable, Hashable {
     let desc: String
     let process: String
     let tips: String
+    let icon: String?
     
     enum CodingKeys: String, CodingKey {
         case categoryId = "category_id"
-        case name, process, tips
+        case name
         case desc = "description"
+        case process
+        case tips
+        case icon
     }
 }
 
