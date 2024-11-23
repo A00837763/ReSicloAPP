@@ -17,14 +17,7 @@ struct CenterDetailView: View {
         }
         .presentationConfiguration
         .onAppear { sheetHeight = .height(200) }
-        .highPriorityGesture(
-            DragGesture()
-                .onEnded { gesture in
-                    if gesture.translation.height > 100 {
-                        dismiss()
-                    }
-                }
-        )
+
     }
 }
 
