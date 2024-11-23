@@ -98,12 +98,14 @@ struct CenterDetailContent: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                wasteCategoriesSection
-                operatingHoursSection
+
                 
                 if let description = center.desc {
                     descriptionSection(description)
                 }
+            
+                operatingHoursSection
+                wasteCategoriesSection
                 
                 Spacer(minLength: 100)
             }
@@ -120,9 +122,16 @@ struct CenterDetailContent: View {
             
             LazyVGrid(columns: columns, spacing: 8) {
                 ForEach(center.wasteCategories, id: \.categoryId) { category in
-                    WasteCategoryRow(category: category)
+                    NavigationLink(value: category) {
+                        WasteCategoryRow(category: category)
+                            .contentShape(Rectangle())
+                    }
+                    .buttonStyle(.plain) // Preserves custom styling
                 }
             }
+        }
+        .navigationDestination(for: WasteCategory.self) { category in
+            WasteLDetail(category: category)
         }
     }
     
@@ -191,3 +200,5 @@ struct CenterDetailFooter: View {
         }
     }
 }
+
+
