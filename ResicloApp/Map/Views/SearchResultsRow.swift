@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SearchResultRow: View {
-    let marker: CollectionMarker
+    let marker: RecyclingCenter
     let onSelect: () -> Void
     @State private var isPressed = false
     
@@ -10,10 +10,12 @@ struct SearchResultRow: View {
             HStack(spacing: 16) {
                 markerIcon
                 markerDetails
+                Spacer(minLength: 16) // Ensures minimum spacing
                 chevronIcon
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
+            .frame(maxWidth: .infinity) // Forces full width
             .background(pressedBackground)
         }
         .buttonStyle(.plain)
@@ -36,12 +38,14 @@ struct SearchResultRow: View {
         VStack(alignment: .leading, spacing: 4) {
             Text(marker.name)
                 .font(.system(size: 17, weight: .medium))
+                .lineLimit(1)
             
             Text(marker.address)
                 .font(.system(size: 15))
                 .foregroundColor(.secondary)
                 .lineLimit(1)
         }
+        .frame(maxWidth: .infinity, alignment: .leading) // Forces text container to take available space
     }
     
     private var chevronIcon: some View {

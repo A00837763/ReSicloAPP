@@ -2,85 +2,70 @@
 //  WasteLRow.swift
 //  ResicloApp
 //
-//  Created by Hugo Ochoa  on 06/11/24.
+//  Created by Hugo Ochoa on 06/11/24.
 //
-
 import SwiftUI
 
 struct WasteLRow: View {
-    var waste: WasteL
+    var category: WasteCategory
     
     var body: some View {
-        HStack(spacing: 16) {
-            if let iconURL = waste.iconURL {
-                AsyncImage(url: iconURL) { image in
+        HStack(spacing: 12) {
+            // Icon or placeholder
+            if let icon = category.icon {
+                AsyncImage(url: URL(string: icon)) { image in
                     image
                         .resizable()
                         .scaledToFit()
+                        .clipShape(Circle())
+                        .frame(width: 40, height: 40)
+                        .background(Circle().fill(Color(.systemGray5)))
                 } placeholder: {
                     Image(systemName: "photo")
-                        .foregroundStyle(Color.resicloGreen2)
+                        .foregroundColor(.secondary)
+                        .frame(width: 40, height: 40)
                 }
-                .frame(width: 50, height: 50)
             } else {
                 Image(systemName: "leaf.circle.fill")
                     .resizable()
-                    .foregroundStyle(Color.resicloGreen2)
-                    .frame(width: 50, height: 50)
-                    .clipShape(Circle())
-                    .overlay(
-                        Circle()
-                            .stroke(Color.resicloGreen1, lineWidth: 2)
-                    )
-                    .background(
-                        Circle()
-                            .fill(Color.resicloGreen1.opacity(0.1))
-                            .padding(-4)
-                    )
-                    .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+                    .scaledToFit()
+                    .foregroundStyle(.resicloGreen1)
+                    .frame(width: 40, height: 40)
             }
             
-            VStack(alignment: .leading, spacing: 4) {
-                HStack {
-                    Text(waste.name)
-                        .font(.headline)
-                        .foregroundStyle(.primary)
-                    
-                    if waste.isFavorite {
-                        Image(systemName: "star.fill")
-                            .foregroundStyle(.yellow)
-                            .font(.subheadline)
-                    }
-                }
+            // Text content
+            VStack(alignment: .leading, spacing: 2) {
+                Text(category.name)
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundColor(.primary)
+                    .lineLimit(1)
                 
-                if !waste.description.isEmpty {
-                    Text(waste.description)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                if !category.desc.isEmpty {
+                    Text(category.desc)
+                        .font(.system(size: 14))
+                        .foregroundColor(.secondary)
                         .lineLimit(2)
                 }
             }
             
             Spacer()
-            
-            Image(systemName: "chevron.right")
-                .font(.subheadline.weight(.semibold))
-                .foregroundStyle(.gray)
         }
-        .padding()
-        .background(Color.white)
-        .cornerRadius(12)
+        .padding(.vertical, 8) // Add vertical padding for a clean native look
     }
 }
+
 
 
 #Preview {
-    let wastes = ModelData().wastes
-    return Group {
-        WasteLRow(waste: wastes[0])
-        WasteLRow(waste: wastes[1])
-    }
+    let sampleCategory = WasteCategory(
+        categoryId: 1,
+        name: "Papel y Cartón",
+        desc: "Papel, cartón y derivados",
+        process: "Separar y aplanar",
+        tips: "Mantener seco",
+        icon: nil
+    )
+    
+    return WasteLRow(category: sampleCategory)
+        .padding()
 }
-
-
-

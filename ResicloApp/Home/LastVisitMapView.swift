@@ -20,14 +20,9 @@ struct LastVisitMapView: View {
                 }
             }
             .mapStyle(.standard)
-            .frame(height: 160)
+            .frame(maxWidth: .infinity)
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .onTapGesture(perform: onTapMap)
-            
-            Text("Última visita ReSiclo")
-                .font(.system(size: 16, weight: .bold))
-                .foregroundColor(.resicloBrown)
-                .padding(.leading, 8)
         }
         .frame(maxWidth: .infinity)
     }

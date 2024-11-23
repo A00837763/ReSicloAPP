@@ -2,10 +2,11 @@ import SwiftUI
 
 // SearchResultsView.swift
 struct SearchResultsView: View {
-    let markers: [CollectionMarker]
+    let markers: [RecyclingCenter]
     @Binding var searchText: String
     @Binding var showingResults: Bool
-    let onMarkerSelected: (CollectionMarker) -> Void
+
+    let onMarkerSelected: (RecyclingCenter) -> Void
     
     var body: some View {
         VStack(spacing: 0) {
@@ -71,3 +72,4 @@ struct SearchResultsView: View {
         .padding(.vertical, 8)
     }
 }
+

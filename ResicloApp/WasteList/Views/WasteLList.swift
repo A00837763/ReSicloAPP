@@ -2,84 +2,47 @@ import SwiftUI
 
 struct WasteLList: View {
     @Environment(ModelData.self) private var modelData
-    @State private var showFavoritesOnly = false
-
-    var filteredWastes: [WasteL] {
-        let wastes = modelData.wastes.filter { waste in
-            (!showFavoritesOnly || waste.isFavorite)
+    @State private var searchText = ""
+    
+    var filteredCategories: [WasteCategory] {
+        guard !searchText.isEmpty else { return modelData.categories }
+        
+        let normalizedSearchText = searchText.folding(options: .diacriticInsensitive, locale: .current)
+        
+        return modelData.categories.filter {
+            let normalizedName = $0.name.folding(options: .diacriticInsensitive, locale: .current)
+            return normalizedName.localizedCaseInsensitiveContains(normalizedSearchText)
         }
-        return Array(wastes)
     }
-
+    
     var body: some View {
         NavigationStack {
-            ZStack {
-                Color(.systemBackground)
-                    .ignoresSafeArea()
-                
-                VStack(spacing: 0) {
-                    VStack(spacing: 16) {
-                        Toggle(isOn: $showFavoritesOnly) {
-                            Label {
-                                Text("Mostrar Favoritos")
-                                    .font(.headline)
-                            } icon: {
-                                Image(systemName: "star.fill")
-                            }
-                        }
-                        .tint(.resicloGreen1)
-                        .padding(.horizontal)
-                        .padding(.vertical, 8)
-                        .background {
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(Color.gray.opacity(0.1))
-                        }
+            List {
+                ForEach(filteredCategories, id: \.categoryId) { category in
+                    NavigationLink(destination: WasteLDetail(category: category)) {
+                        WasteLRow(category: category)
                     }
-                    .padding()
-                    .background(.white)
-                    
-                    Divider()
-                    
-                    // Waste List
-                    ScrollView {
-                        LazyVStack(spacing: 12) {
-                            ForEach(filteredWastes) { waste in
-                                NavigationLink(destination: WasteLDetail(waste: waste)) {
-                                    WasteLRow(waste: waste)
-                                        .padding(.horizontal)
-                                        .background {
-                                            RoundedRectangle(cornerRadius: 12)
-                                                .fill(.white)
-                                                .shadow(color: .black.opacity(0.05), radius: 5, y: 2)
-                                        }
-                                }
-                                .buttonStyle(.plain)
-                                .transition(.move(edge: .leading))
-                            }
-                        }
-                        .padding()
-                    }
+                    .listRowSeparator(.visible)
+                    .listRowSeparatorTint(Color(.systemGray4))
                 }
             }
-            .navigationTitle("Tipos de Desechos")
+            .searchable(text: $searchText, prompt: "Search waste types")
+            .navigationTitle("Waste Types")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    HStack {
-                        Image(systemName: "leaf.circle.fill")
-                            .foregroundStyle(.resicloGreen1)
-                        Text("Tipos de Desechos")
-                            .font(.headline)
-                            .foregroundStyle(.resicloGreen1)
-                    }
+            .listStyle(.insetGrouped)
+            .task {
+                if modelData.categories.isEmpty {
+                    await modelData.fetchCategories()
                 }
             }
         }
     }
 }
 
-// Preview
+
+// Preview Support
 #Preview {
     WasteLList()
         .environment(ModelData())
 }
+
