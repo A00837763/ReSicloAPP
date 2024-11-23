@@ -27,7 +27,13 @@ struct WasteLList: View {
                 }
             }
             .searchable(text: $searchText, prompt: "Search waste types")
-            .navigationTitle("Waste Types")
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Lista Resiclo")
+                        .font(.headline)
+                        .foregroundStyle(.resicloGreen1)
+                }
+            }
             .navigationBarTitleDisplayMode(.inline)
             .listStyle(.insetGrouped)
             .task {

@@ -141,14 +141,36 @@ struct CenterDetailContent: View {
                 .font(.headline)
                 .foregroundColor(.resicloGreen1)
             
-            ForEach(center.operatingHours, id: \.day) { hours in
-                HStack {
-                    Text(hours.day)
-                        .frame(width: 100, alignment: .leading)
-                    Text("\(hours.openingTime) - \(hours.closingTime)")
+            let grouped = Dictionary(grouping: center.operatingHours) { $0.day }
+            let dayOrder: [String: Int] = [
+                "Sunday": 0,
+                "Monday": 1,
+                "Tuesday": 2,
+                "Wednesday": 3,
+                "Thursday": 4,
+                "Friday": 5,
+                "Saturday": 6
+            ]
+            
+            let sortedGroups = grouped.map { (day: $0.key, hours: $0.value) }
+                .sorted { first, second in
+                    (dayOrder[first.day] ?? 7) < (dayOrder[second.day] ?? 7)
                 }
-                .font(.subheadline)
-                .padding(.leading, 28)
+            
+            ForEach(sortedGroups, id: \.day) { dayGroup in
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(dayGroup.day)
+                        .font(.subheadline)
+                    
+                    ForEach(dayGroup.hours.sorted { $0.openingTime < $1.openingTime },
+                           id: \.openingTime) { hours in
+                        Text("\(hours.openingTime) - \(hours.closingTime)")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .padding(.leading)
+                    }
+                }
+                .padding(.vertical, 2)
             }
         }
     }
