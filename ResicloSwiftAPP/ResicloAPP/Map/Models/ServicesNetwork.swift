@@ -2,7 +2,7 @@ import Foundation
 import CoreLocation
 
 class NetworkService {
-    private let baseURL = "http://127.0.0.1:8000/api"
+    private let baseURL = "http://recycling-centers-api.vercel.app/api"
     
     func fetchCenters() async throws -> [RecyclingCenter] {
         let url = URL(string: "\(baseURL)/centers")!

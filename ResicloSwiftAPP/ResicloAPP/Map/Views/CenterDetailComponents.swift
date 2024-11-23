@@ -98,12 +98,14 @@ struct CenterDetailContent: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                wasteCategoriesSection
-                operatingHoursSection
+
                 
                 if let description = center.desc {
                     descriptionSection(description)
                 }
+            
+                operatingHoursSection
+                wasteCategoriesSection
                 
                 Spacer(minLength: 100)
             }
@@ -120,9 +122,16 @@ struct CenterDetailContent: View {
             
             LazyVGrid(columns: columns, spacing: 8) {
                 ForEach(center.wasteCategories, id: \.categoryId) { category in
-                    WasteCategoryRow(category: category)
+                    NavigationLink(value: category) {
+                        WasteCategoryRow(category: category)
+                            .contentShape(Rectangle())
+                    }
+                    .buttonStyle(.plain) // Preserves custom styling
                 }
             }
+        }
+        .navigationDestination(for: WasteCategory.self) { category in
+            WasteLDetail(category: category)
         }
     }
     
@@ -132,14 +141,36 @@ struct CenterDetailContent: View {
                 .font(.headline)
                 .foregroundColor(.resicloGreen1)
             
-            ForEach(center.operatingHours, id: \.day) { hours in
-                HStack {
-                    Text(hours.day)
-                        .frame(width: 100, alignment: .leading)
-                    Text("\(hours.openingTime) - \(hours.closingTime)")
+            let grouped = Dictionary(grouping: center.operatingHours) { $0.day }
+            let dayOrder: [String: Int] = [
+                "Sunday": 0,
+                "Monday": 1,
+                "Tuesday": 2,
+                "Wednesday": 3,
+                "Thursday": 4,
+                "Friday": 5,
+                "Saturday": 6
+            ]
+            
+            let sortedGroups = grouped.map { (day: $0.key, hours: $0.value) }
+                .sorted { first, second in
+                    (dayOrder[first.day] ?? 7) < (dayOrder[second.day] ?? 7)
                 }
-                .font(.subheadline)
-                .padding(.leading, 28)
+            
+            ForEach(sortedGroups, id: \.day) { dayGroup in
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(dayGroup.day)
+                        .font(.subheadline)
+                    
+                    ForEach(dayGroup.hours.sorted { $0.openingTime < $1.openingTime },
+                           id: \.openingTime) { hours in
+                        Text("\(hours.openingTime) - \(hours.closingTime)")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .padding(.leading)
+                    }
+                }
+                .padding(.vertical, 2)
             }
         }
     }
@@ -191,3 +222,5 @@ struct CenterDetailFooter: View {
         }
     }
 }
+
+

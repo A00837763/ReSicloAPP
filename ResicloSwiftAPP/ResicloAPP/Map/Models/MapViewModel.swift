@@ -21,8 +21,25 @@ class MapViewModel {
     
     var filteredMarkers: [RecyclingCenter] {
         guard !searchText.isEmpty else { return filteredCenters }
-        return filteredCenters.filter {
-            $0.name.localizedCaseInsensitiveContains(searchText)
+        
+        // Normalize the search text first (remove accents)
+        let normalizedSearch = searchText.folding(options: .diacriticInsensitive, locale: .current)
+        
+        return filteredCenters.filter { center in
+            // Basic info match with normalized strings
+            let basicInfoMatch = [
+                center.name.folding(options: .diacriticInsensitive, locale: .current),
+                center.address.folding(options: .diacriticInsensitive, locale: .current),
+                center.city.folding(options: .diacriticInsensitive, locale: .current)
+            ].contains { $0.localizedCaseInsensitiveContains(normalizedSearch) }
+            
+            // Waste categories match with normalized strings
+            let categoryMatch = center.wasteCategories.contains { category in
+                category.name.folding(options: .diacriticInsensitive, locale: .current)
+                    .localizedCaseInsensitiveContains(normalizedSearch)
+            }
+            
+            return basicInfoMatch || categoryMatch
         }
     }
     

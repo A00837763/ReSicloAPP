@@ -15,12 +15,23 @@ struct MapLayerView: View {
     let userLocation: CLLocationCoordinate2D?
     let onMarkerSelected: (RecyclingCenter) -> Void
     
+    // Define special waste types
+    private let specialWasteTypes = ["Pilas alcalinas"]
+    
+    // Helper function to determine marker tint
+    private func markerTint(for center: RecyclingCenter) -> Color {
+        let hasSpecialWaste = center.wasteCategories.contains { category in
+            specialWasteTypes.contains(category.name)
+        }
+        return hasSpecialWaste ? .yellow : .resicloGreen1
+    }
+    
     var body: some View {
         Map(position: $position, selection: $selectedMarker) {
             // Centers Markers
             ForEach(centers) { marker in
                 Marker(marker.name, systemImage: "leaf.circle.fill", coordinate: marker.coordinate)
-                    .tint(.resicloGreen1)
+                    .tint(markerTint(for: marker))
                     .tag(marker)
                     .annotationTitles(.hidden)
             }
