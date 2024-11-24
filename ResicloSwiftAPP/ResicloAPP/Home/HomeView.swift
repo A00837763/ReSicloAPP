@@ -34,34 +34,17 @@ struct HomeView: View {
 
                 Divider()
 
-                HStack(spacing: 16) {
-                    Button(action: {
-                        showScanner = true
-                    }) {
-                        Label("Escanear QR", systemImage: "qrcode.viewfinder")
-                    }
-                    .buttonStyle(.bordered)
+                ResiclaView(showScanner: $showScanner, showHistory: $showHistory)
 
-                    Button(action: {
-                        showHistory = true
-                    }) {
-                        Label("Historial", systemImage: "clock")
-                    }
-                    .buttonStyle(.bordered)
-                }
-
-                Divider()
-                ActivityView()
                 Divider()
                 KnowledgeSection()
             }
             .padding()
         }
-        .onAppear(perform: cargarDatosUsuario) // Carga los datos al aparecer la vista
+        .onAppear(perform: cargarDatosUsuario)
         .sheet(isPresented: $showScanner) {
             QRScannerView(
                 didFindCode: { code in
-                    // Simula datos del QR escaneado
                     scannerQRData = QRScannerData(qrData: code, material: "Plástico", kilos: 5)
                 }
             )
@@ -83,7 +66,6 @@ struct HomeView: View {
         }
     }
 
-    /// Carga los datos del usuario desde Firestore
     func cargarDatosUsuario() {
         guard let uid = Auth.auth().currentUser?.uid else {
             print("Usuario no autenticado, no se puede cargar la información del usuario.")
@@ -101,7 +83,6 @@ struct HomeView: View {
         }
     }
 
-    /// Guarda el reciclaje en Firestore y actualiza el estado
     func guardarReciclaje(kilos: Int, material: String, puntos: Int) {
         guard let uid = Auth.auth().currentUser?.uid else {
             print("Usuario no autenticado, no se puede guardar el reciclaje.")
@@ -115,7 +96,6 @@ struct HomeView: View {
             puntos: puntos
         )
 
-        userPoints += puntos // Actualiza los puntos totales localmente
+        userPoints += puntos
     }
 }
-

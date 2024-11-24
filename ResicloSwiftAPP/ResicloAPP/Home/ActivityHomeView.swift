@@ -1,74 +1,73 @@
 import SwiftUI
+import MapKit
+import FirebaseAuth
 
-struct ActivityView: View {
-    // Sample data structure for activities
-    struct Activity: Identifiable {
-        let id = UUID()
-        let icon: String
-        let title: String
-        let description: String
-        let time: String
-    }
-    
-    let activities: [Activity] = [
-        Activity(icon: "barcode.viewfinder", title: "Producto Escaneado", description: "Escaneaste una botella de plastico. ¡Recuerda enjuegarla antes de reciclarla!", time: "Hace 2 horas"),
-        Activity(icon: "leaf.fill", title: "Eco Tip", description: "Did you know? Recycling one aluminum can saves enough energy to run a TV for 3 hours.", time: "Yesterday"),
-        Activity(icon: "location.fill", title: "Recycling Center", description: "You visited Green Earth Recycling Center. Keep up the good work!", time: "3 days ago")
-    ]
+struct ResiclaView: View {
+    @Binding var showScanner: Bool
+    @Binding var showHistory: Bool
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("ACTIVIDAD")
+            Text("RESICLA")
                 .font(.title2)
                 .bold()
                 .foregroundColor(Color("ResicloGreen1"))
             
-            ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(alignment: .top, spacing: 50) {
-                    ForEach(activities) { activity in
-                        activityCard(activity: activity)
+            HStack(spacing: 20) {
+                // QR Scanner Button
+                Button(action: {
+                    showScanner = true
+                }) {
+                    VStack(spacing: 8) {
+                        HStack {
+                            Image(systemName: "qrcode.viewfinder")
+                                .font(.system(size: 24))
+                                .foregroundColor(Color("ResicloCream1"))
+                            Text("Escanear QR")
+                                .font(.headline)
+                                .foregroundColor(Color("ResicloCream1"))
+                        }
+                        
+                        Text("Escanea el código QR en tu centro de reciclaje")
+                            .font(.caption)
+                            .foregroundColor(Color("ResicloCream1"))
+                            .multilineTextAlignment(.leading)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
-                }
-                .padding(.horizontal, 20)
-            }
-            .padding(.horizontal, -16)
-        }
-    }
-    
-    private func activityCard(activity: Activity) -> some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack(spacing: 12) {
-                Image(systemName: activity.icon)
-                    .font(.system(size: 24))
-                    .foregroundColor(Color("ResicloCream1"))
-                    .frame(width: 40, height: 40)
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 16)
                     .background(Color("ResicloGreen2"))
-                    .clipShape(Circle())
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                }
                 
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(activity.title)
-                        .font(.headline)
-                        .foregroundColor(Color("ResicloGreen2"))
-                    
-                    Text(activity.time)
-                        .font(.caption)
-                        .foregroundStyle(Color("ResicloGreen1"))
+                // History Button
+                Button(action: {
+                    showHistory = true
+                }) {
+                    VStack(spacing: 8) {
+                        HStack {
+                            Image(systemName: "clock")
+                                .font(.system(size: 24))
+                                .foregroundColor(Color("ResicloCream1"))
+                            Text("Historial")
+                                .font(.headline)
+                                .foregroundColor(Color("ResicloCream1"))
+                        }
+                        
+                        Text("Revisa tu historial de reciclaje y puntos")
+                            .font(.caption)
+                            .foregroundColor(Color("ResicloCream1"))
+                            .multilineTextAlignment(.leading)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 16)
+                    .background(Color("ResicloGreen2"))
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
             }
-            
-            Text(activity.description)
-                .font(.subheadline)
-                .foregroundColor(Color("ResicloBrown"))
-                .lineLimit(3)
-                .multilineTextAlignment(.leading)
         }
-        .padding(20)
-        .frame(width: 350, height: 150, alignment: .leading)
-        .background(Color("ResicloCream1"))
-        .clipShape(RoundedRectangle(cornerRadius: 16))
     }
-}
-
-#Preview {
-    ActivityView()
 }

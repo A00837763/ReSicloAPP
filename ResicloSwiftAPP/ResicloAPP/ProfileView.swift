@@ -8,14 +8,17 @@
 import SwiftUI
 import FirebaseAuth
 
+import SwiftUI
+import FirebaseAuth
+
 struct ProfileView: View {
     let profileImageURL: URL?
-    
+    @State private var userEmail: String = ""
+
     var body: some View {
         VStack {
-            if let profileImageURL = profileImageURL {
-                // Cargar la imagen de perfil con AsyncImage (iOS 15+)
-                AsyncImage(url: profileImageURL) { phase in
+            if let url = profileImageURL {
+                AsyncImage(url: url) { phase in
                     switch phase {
                     case .empty:
                         ProgressView() // Muestra un spinner mientras carga
@@ -46,8 +49,27 @@ struct ProfileView: View {
             Text("Bienvenido a tu perfil")
                 .font(.title)
                 .padding(.top, 20)
+            
+            if !userEmail.isEmpty {
+                Text("Correo: \(userEmail)")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+                    .padding(.top, 8)
+            }
+        }
+        .onAppear {
+            obtenerCorreo()
         }
         .padding()
+    }
+    
+    // Función para obtener el correo del usuario autenticado
+    private func obtenerCorreo() {
+        if let email = Auth.auth().currentUser?.email {
+            userEmail = email
+        } else {
+            userEmail = "Correo no disponible"
+        }
     }
 }
 
