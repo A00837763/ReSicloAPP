@@ -20,5 +20,3 @@ struct HeaderView: View {
         }
     }
 }
-
-,
