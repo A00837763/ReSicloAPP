@@ -1,15 +1,10 @@
 import SwiftUI
-import FirebaseAuth
 
 struct HeaderView: View {
     let userName: String
     @Environment(\.presentationMode) var presentationMode
     @State private var showProfileView = false
-
-    // Propiedad calculada para obtener la URL de la foto de perfil del usuario actual
-    private var profileImageURL: URL? {
-        Auth.auth().currentUser?.photoURL
-    }
+    @ObservedObject var authManager = AuthenticationManager.shared
 
     var body: some View {
         HStack {
@@ -18,21 +13,22 @@ struct HeaderView: View {
                 .fontWeight(.bold)
             Spacer()
             Button(action: {
-                presentationMode.wrappedValue.dismiss()
-                showProfileView = true
+                // Obtén la URL de la imagen de Firestore antes de mostrar ProfileView
+                authManager.obtenerImagenDePerfilDesdeFirestore { url in
+                    if let url = url {
+                        authManager.profileImageURL = url // Asegúrate de actualizar la URL
+                    }
+                    showProfileView = true
+                }
             }) {
                 Image(systemName: "person.crop.circle.fill")
                     .resizable()
                     .frame(width: 30, height: 30)
-                    .onTapGesture {
-                        showProfileView = true
-                    }
             }
         }
         .foregroundStyle(.resicloGreen2)
         .sheet(isPresented: $showProfileView) {
-            // Pasamos la URL de la foto de perfil a ProfileView
-            ProfileView(profileImageURL: profileImageURL)
+            ProfileView(profileImageURL: authManager.profileImageURL) // Pasamos la URL desde Firebase Storage
         }
     }
 }
