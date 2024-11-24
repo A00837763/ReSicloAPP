@@ -1,37 +1,41 @@
 import SwiftUI
-import SwiftData
+import FirebaseAuth
 
 struct ContentView: View {
     @State private var showStartPage = true
-    @Environment(\.modelContext) private var modelContext
-    @Environment(MapViewModel.self) private var vm
-    
+    @StateObject private var authManager = AuthenticationManager.shared
+
     var body: some View {
         ZStack {
             if showStartPage {
                 StartPage(showStartPage: $showStartPage)
-                    .transition(.opacity)
-            } else {
+            } else if authManager.isAuthenticated {
                 MainTabView()
-                    .transition(.opacity)
-                    .environment(\.modelContext, modelContext)
+            } else {
+                Text("Cargando...")
             }
         }
-        .animation(.easeInOut(duration: 0.3), value: showStartPage)
+        .onAppear {
+            verificarEstadoDeAutenticacion()
+        }
     }
-}
-#Preview {
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(
-        for: StoredRecyclingCenter.self,
-        StoredOperatingHours.self,
-        StoredWasteCategory.self,
-        configurations: config
-    )
-    
-    let viewModel = MapViewModel(modelContext: container.mainContext)
-    
-    return ContentView()
-        .modelContainer(container)
-        .environment(viewModel)
+
+    private func verificarEstadoDeAutenticacion() {
+        if let user = Auth.auth().currentUser {
+            authManager.isAuthenticated = true
+            guardarDatosUsuarioEnFirestore(user: user)
+        } else {
+            authManager.isAuthenticated = false
+        }
+    }
+
+    private func guardarDatosUsuarioEnFirestore(user: User) {
+        let uid = user.uid
+        let name = user.displayName ?? "Usuario Sin Nombre"
+        let email = user.email ?? "Correo No Disponible"
+        let photoURL = user.photoURL?.absoluteString
+
+        // Llama al FirestoreManager para guardar los datos
+        FirestoreManager.shared.guardarDatosUsuario(uid: uid, name: name, email: email, photoURL: photoURL)
+    }
 }

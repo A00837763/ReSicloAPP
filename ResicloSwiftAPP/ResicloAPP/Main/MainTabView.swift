@@ -24,6 +24,12 @@ struct MainTabView: View {
                 }
                 .tag(0)
             
+            QRGeneratorView() // Vista de Generar QR
+                .tabItem {
+                    Label("Historial", systemImage: "qrcode")
+                }
+                .tag(1)
+            
             CameraViewWrapper()
                 .tabItem {
                     Label("Scan", systemImage: "qrcode.viewfinder")
@@ -46,21 +52,3 @@ struct MainTabView: View {
     }
 }
 
-
-#Preview {
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(
-        for: StoredRecyclingCenter.self,
-        StoredOperatingHours.self,
-        StoredWasteCategory.self,
-        configurations: config
-    )
-    
-    let viewModel = MapViewModel(modelContext: container.mainContext)
-    let locationManager = LocationManager()
-    
-    return MainTabView()
-        .modelContainer(container)
-        .environment(viewModel)
-        .environment(locationManager)
-}
