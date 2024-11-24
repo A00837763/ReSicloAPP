@@ -3,34 +3,170 @@ import Foundation
 import SwiftUI
 
 struct KnowledgeSection: View {
-    private let items = [
-        "¿Como Escanear tus Productos?",
-        "Gana puntos al escanear",
-        "Item 3",
-        "Item 4",
-        "Item 5",
-        "Item 6",
-        "Item 7",
-        "Item 8",
-        "Item 9",
-        "Item 10"
-    ]
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("CONOCE")
-                .font(.title2)
-                .bold()
-                .foregroundColor(.resicloGreen1)
-            
-            ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: 16) {
-                    ForEach(items, id: \.self) { item in
-                        ItemView(title: item)
-                    }
-                }
-            }
-            .frame(height: 150)
-        }
-    }
+   @State private var isVisible = false
+
+   var body: some View {
+       VStack(alignment: .leading, spacing: 16) {
+           // Header
+           HStack {
+               Image(systemName: "lightbulb.circle.fill")
+                   .font(.system(size: 18))
+                   .foregroundColor(Color("ResicloGreen1"))
+               
+               Text("Aprende & Participa")
+                   .font(.headline)
+                   .foregroundColor(.primary)
+           }
+           
+           LazyVGrid(columns: [
+               GridItem(.flexible(), spacing: 12),
+               GridItem(.flexible(), spacing: 12)
+           ], spacing: 12) {
+               // Eventos con badge de "Nuevo"
+               KnowledgeCard(
+                   icon: "calendar",
+                   title: "Eventos",
+                   description: "Próximos eventos de reciclaje",
+                   badgeText: "¡Nuevo!",
+                   illustration: "figure.2.and.child.holdinghands"
+               )
+               .transition(.scale.combined(with: .opacity))
+               .animation(.spring(dampingFraction: 0.8), value: isVisible)
+               
+               // Tips con contador
+               KnowledgeCard(
+                   icon: "lightbulb.fill",
+                   title: "Tips",
+                   description: "Aprende a usar la app",
+                   badgeText: "3 Tips",
+                   illustration: "leaf.arrow.circlepath"
+               )
+               .transition(.scale.combined(with: .opacity))
+               .animation(.spring(dampingFraction: 0.8).delay(0.1), value: isVisible)
+           }
+       }
+       .padding()
+       .background(
+           RoundedRectangle(cornerRadius: 12)
+               .fill(Color(.systemBackground))
+               .shadow(
+                   color: Color.black.opacity(0.1),
+                   radius: 5,
+                   x: 0,
+                   y: 2
+               )
+       )
+       .onAppear { isVisible = true }
+   }
+}
+
+struct KnowledgeCard: View {
+   let icon: String
+   let title: String
+   let description: String
+   let badgeText: String
+   let illustration: String
+   
+   var body: some View {
+       Button(action: {}) {
+           ZStack {
+               // Patrón de fondo
+               BackgroundPattern()
+               
+               VStack(alignment: .leading, spacing: 12) {
+                   // Header con badge
+                   HStack {
+                       Image(systemName: icon)
+                           .font(.system(size: 20))
+                           .foregroundColor(Color("ResicloGreen1"))
+                       
+                       Spacer()
+                       
+                       Text(badgeText)
+                           .font(.caption2)
+                           .fontWeight(.medium)
+                           .foregroundColor(.white)
+                           .padding(.horizontal, 8)
+                           .padding(.vertical, 4)
+                           .background(
+                               Capsule()
+                                   .fill(Color("ResicloGreen1"))
+                                   .shadow(color: Color("ResicloGreen1").opacity(0.3), radius: 4, x: 0, y: 2)
+                           )
+                   }
+                   
+                   // Ilustración central
+                   Image(systemName: illustration)
+                       .font(.system(size: 40))
+                       .foregroundStyle(
+                           LinearGradient(
+                               colors: [
+                                   Color("ResicloGreen1").opacity(0.8),
+                                   Color("ResicloGreen1").opacity(0.4)
+                               ],
+                               startPoint: .topLeading,
+                               endPoint: .bottomTrailing
+                           )
+                       )
+                       .frame(maxWidth: .infinity, alignment: .center)
+                       .padding(.vertical, 8)
+                   
+                   // Información
+                   Text(title)
+                       .font(.subheadline)
+                       .fontWeight(.semibold)
+                       .foregroundColor(.primary)
+                   
+                   Text(description)
+                       .font(.caption)
+                       .foregroundColor(.secondary)
+                       .lineLimit(2)
+               }
+               .padding()
+           }
+           .background(
+               RoundedRectangle(cornerRadius: 12)
+                   .fill(Color(.secondarySystemBackground))
+                   .overlay(
+                       RoundedRectangle(cornerRadius: 12)
+                           .stroke(Color("ResicloGreen1").opacity(0.1), lineWidth: 1)
+                   )
+           )
+           .shadow(
+               color: Color("ResicloGreen1").opacity(0.1),
+               radius: 8,
+               x: 0,
+               y: 4
+           )
+           .contentShape(Rectangle())
+           .hoverEffect(.lift)
+       }
+   }
+}
+
+struct BackgroundPattern: View {
+   var body: some View {
+       GeometryReader { geometry in
+           ZStack {
+               ForEach(0..<3) { index in
+                   Image(systemName: "leaf.fill")
+                       .font(.system(size: 24))
+                       .foregroundStyle(Color("ResicloGreen1").opacity(0.03))
+                       .rotationEffect(.degrees(Double(index * 45)))
+                       .offset(
+                           x: CGFloat.random(in: 0...geometry.size.width),
+                           y: CGFloat.random(in: 0...geometry.size.height)
+                       )
+               }
+           }
+       }
+   }
+}
+
+// Preview
+struct KnowledgeSection_Previews: PreviewProvider {
+   static var previews: some View {
+       KnowledgeSection()
+           .padding()
+   }
 }
