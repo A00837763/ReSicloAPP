@@ -34,19 +34,19 @@ struct MainTabView: View {
                 .tabItem {
                     Label("Scan", systemImage: "qrcode.viewfinder")
                 }
-                .tag(1)
+                .tag(2)
             
             MapView(locationManager: locationManager)
                 .tabItem {
                     Label("Map", systemImage: "map")
                 }
-                .tag(2)
+                .tag(3)
             
             WasteLList()
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
-                .tag(3)
+                .tag(4)
         }
         .tint(Color("ResicloGreen2"))
     }
