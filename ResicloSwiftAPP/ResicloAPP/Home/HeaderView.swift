@@ -10,7 +10,7 @@ struct HeaderView: View {
     var body: some View {
         HStack {
             Text("Hola, \(userName)")
-                .font(.title)
+                .font(.title2)
                 .fontWeight(.bold)
             Spacer()
         }
@@ -20,3 +20,5 @@ struct HeaderView: View {
         }
     }
 }
+
+,

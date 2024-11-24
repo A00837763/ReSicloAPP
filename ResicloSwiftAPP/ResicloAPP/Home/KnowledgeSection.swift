@@ -48,7 +48,7 @@ struct KnowledgeSection: View {
        .padding()
        .background(
            RoundedRectangle(cornerRadius: 12)
-               .fill(Color(.systemBackground))
+               .fill(Color(.tertiarySystemBackground))
                .shadow(
                    color: Color.black.opacity(0.1),
                    radius: 5,
@@ -71,7 +71,6 @@ struct KnowledgeCard: View {
        Button(action: {}) {
            ZStack {
                // Patrón de fondo
-               BackgroundPattern()
                
                VStack(alignment: .leading, spacing: 12) {
                    // Header con badge
@@ -91,7 +90,7 @@ struct KnowledgeCard: View {
                            .background(
                                Capsule()
                                    .fill(Color("ResicloGreen1"))
-                                   .shadow(color: Color("ResicloGreen1").opacity(0.3), radius: 4, x: 0, y: 2)
+                                   .shadow(color: Color("ResicloGreen1").opacity(0.05), radius: 4, x: 0, y: 2)
                            )
                    }
                    
@@ -126,39 +125,16 @@ struct KnowledgeCard: View {
            }
            .background(
                RoundedRectangle(cornerRadius: 12)
-                   .fill(Color(.secondarySystemBackground))
-                   .overlay(
-                       RoundedRectangle(cornerRadius: 12)
-                           .stroke(Color("ResicloGreen1").opacity(0.1), lineWidth: 1)
-                   )
+                   .fill(Color(.tertiarySystemBackground))
            )
            .shadow(
-               color: Color("ResicloGreen1").opacity(0.1),
+            color: Color(.black).opacity(0.05),
                radius: 8,
                x: 0,
                y: 4
            )
            .contentShape(Rectangle())
            .hoverEffect(.lift)
-       }
-   }
-}
-
-struct BackgroundPattern: View {
-   var body: some View {
-       GeometryReader { geometry in
-           ZStack {
-               ForEach(0..<3) { index in
-                   Image(systemName: "leaf.fill")
-                       .font(.system(size: 24))
-                       .foregroundStyle(Color("ResicloGreen1").opacity(0.03))
-                       .rotationEffect(.degrees(Double(index * 45)))
-                       .offset(
-                           x: CGFloat.random(in: 0...geometry.size.width),
-                           y: CGFloat.random(in: 0...geometry.size.height)
-                       )
-               }
-           }
        }
    }
 }

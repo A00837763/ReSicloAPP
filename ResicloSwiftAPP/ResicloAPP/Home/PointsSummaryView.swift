@@ -58,7 +58,7 @@ struct PointsSummaryView: View {
        .frame(maxWidth: .infinity, alignment: .leading)
        .background(
            RoundedRectangle(cornerRadius: 12)
-               .fill(Color(.systemBackground))
+               .fill(Color(.tertiarySystemBackground))
                .shadow(
                    color: Color.black.opacity(0.2),
                    radius: 5,

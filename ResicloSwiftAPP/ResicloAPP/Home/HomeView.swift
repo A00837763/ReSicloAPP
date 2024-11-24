@@ -41,23 +41,23 @@ struct HomeView: View {
                 }
                 .padding()
             }
-            .background(Color(.systemBackground))
+            .background(Color(.secondarySystemBackground))
             .toolbar {
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     Button(action: {
                         showHistory = true
                     }) {
                         Image(systemName: "clock")
-                            .font(.system(size: 20))
-                            .foregroundColor(Color("ResicloGreen1"))
+                            .font(.system(size: 15))
+                            .foregroundColor(Color(.white))
                     }
                     
                     Button(action: {
                         showScanner = true
                     }) {
                         Image(systemName: "qrcode.viewfinder")
-                            .font(.system(size: 20))
-                            .foregroundColor(Color("ResicloGreen1"))
+                            .font(.system(size: 15))
+                            .foregroundColor(Color(.white))
                     }
                     Button(action: {
                         // Obtén la URL de la imagen de Firestore antes de mostrar ProfileView
@@ -69,20 +69,21 @@ struct HomeView: View {
                         }
                     }) {
                         Image(systemName: "person.circle")
-                            .font(.system(size: 25))
-                            .foregroundColor(Color("ResicloGreen1"))
+                            .font(.system(size: 20))
+                            .foregroundColor(Color (.white))
                     }
                     
                 }
                 ToolbarItem(placement: .topBarLeading){
                     Text("Resiclo")
                         .font(.title)
-                        .foregroundStyle(.resicloGreen2)
+                        .foregroundStyle(.white)
                         .fontWeight(.bold)
     
                     
                 }
             }
+            .toolbarBackground(.resicloGreen2, for: .navigationBar)
         }
         .onAppear(perform: cargarDatosUsuario)
         .sheet(isPresented: $showScanner) {
