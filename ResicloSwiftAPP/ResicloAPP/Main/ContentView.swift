@@ -12,7 +12,7 @@ struct ContentView: View {
             } else if authManager.isAuthenticated {
                 MainTabView()
             } else {
-                Text("Cargando...")
+                MainTabView()
             }
         }
         .onAppear {
