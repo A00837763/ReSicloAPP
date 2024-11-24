@@ -52,3 +52,17 @@ struct MainTabView: View {
     }
 }
 
+#Preview {
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(
+        for: StoredRecyclingCenter.self,
+        configurations: config
+    )
+    
+    let mapViewModel = MapViewModel(modelContext: container.mainContext)
+    
+     MainTabView()
+        .environment(ModelData())
+        .environment(mapViewModel)
+        .modelContainer(container)
+}
