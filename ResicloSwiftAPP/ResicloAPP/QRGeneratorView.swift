@@ -87,9 +87,6 @@ struct QRGeneratorView: View {
                 }
             }
             .navigationTitle("Registrar Material")
-            .navigationBarItems(trailing: Button("Cancelar") {
-                dismiss()
-            })
         }
     }
 }
