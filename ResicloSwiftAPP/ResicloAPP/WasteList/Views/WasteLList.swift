@@ -1,5 +1,6 @@
 import SwiftUI
 
+
 struct WasteLList: View {
     @Environment(ModelData.self) private var modelData
     @State private var searchText = ""
@@ -17,13 +18,19 @@ struct WasteLList: View {
     
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(filteredCategories, id: \.categoryId) { category in
-                    NavigationLink(destination: WasteLDetail(category: category)) {
-                        WasteLRow(category: category)
+            ZStack {
+                List {
+                    ForEach(filteredCategories, id: \.categoryId) { category in
+                        NavigationLink(destination: WasteLDetail(category: category)) {
+                            WasteLRow(category: category)
+                        }
+                        .listRowSeparator(.visible)
+                        .listRowSeparatorTint(Color(.systemGray4))
                     }
-                    .listRowSeparator(.visible)
-                    .listRowSeparatorTint(Color(.systemGray4))
+                }
+                
+                if modelData.isLoading {
+                    HalfCircleLoadingView()
                 }
             }
             .searchable(text: $searchText, prompt: "Search waste types")
@@ -42,6 +49,24 @@ struct WasteLList: View {
                 }
             }
         }
+    }
+}
+
+struct HalfCircleLoadingView: View {
+    @State private var isRotating = false
+    
+    var body: some View {
+        Circle()
+            .trim(from: 0, to: 0.5)
+            .stroke(Color.resicloGreen1, style: StrokeStyle(lineWidth: 8, lineCap: .round))
+            .frame(width: 60, height: 60)
+            .rotationEffect(.degrees(isRotating ? 360 : 0))
+            .onAppear {
+                withAnimation(.linear(duration: 1)
+                    .repeatForever(autoreverses: false)) {
+                    isRotating = true
+                }
+            }
     }
 }
 

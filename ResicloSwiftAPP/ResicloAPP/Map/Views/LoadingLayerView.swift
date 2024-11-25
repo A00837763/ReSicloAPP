@@ -17,9 +17,7 @@ struct LoadingLayerView: View {
                     .font(.system(size: 60))
                     .foregroundColor(.resicloGreen1)
                 
-                ProgressView()
-                    .controlSize(.large)
-                    .tint(.resicloGreen1)
+                HalfCircleLoadingView()
                 
                 VStack(spacing: 8) {
                     Text("¡Estamos buscando centros cerca de ti!")
