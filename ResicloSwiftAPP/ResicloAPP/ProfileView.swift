@@ -30,20 +30,20 @@ struct ProfileView: View {
                             .clipShape(Circle())
                             .shadow(radius: 10)
                     case .failure:
-                        Image(systemName: "person.crop.circle.badge.exclamationmark")
+                        Image(systemName: "tree")
                             .resizable()
                             .frame(width: 150, height: 150)
-                            .foregroundColor(.gray)
+                            .foregroundColor(.resicloGreen2)
                     @unknown default:
                         EmptyView()
                     }
                 }
             } else {
                 // Imagen de placeholder si no hay foto de perfil
-                Image(systemName: "person.crop.circle")
+                Image(systemName: "tree")
                     .resizable()
                     .frame(width: 150, height: 150)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.resicloGreen2)
             }
             
             Text("Bienvenido a tu perfil")

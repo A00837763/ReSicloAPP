@@ -45,7 +45,7 @@ struct HomeView: View {
             .toolbar {
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     Button(action: { showHistory = true }) {
-                        Image(systemName: "clock")
+                        Image(systemName: "tree")
                             .font(.system(size: 15))
                             .foregroundColor(.white)
                     }
@@ -106,7 +106,7 @@ struct HomeView: View {
                         }
                     }
         .sheet(isPresented: $showHistory) {
-            HistorialReciclajeView()
+            ImpactView(points: userPoints)
         }
         .onAppear(perform: cargarDatosUsuario)
     }

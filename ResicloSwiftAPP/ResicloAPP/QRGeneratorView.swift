@@ -73,9 +73,6 @@ struct QRGeneratorView: View {
                         }
                     }
                     .navigationTitle("Seleccionar Material")
-                    .navigationBarItems(trailing: Button("Cancelar") {
-                        showMaterialPicker = false
-                    })
                 }
             }
             .sheet(isPresented: $showQRCode) {
