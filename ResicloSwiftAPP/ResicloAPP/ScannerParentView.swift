@@ -9,21 +9,38 @@ import SwiftUI
 import FirebaseFirestore
 import FirebaseAuth
 struct ScannerParentView: View {
-    @State private var showScanner = false // Controla cuándo mostrar el escáner
-
+    @State private var showScanner = false
+    @State private var showDataView = false
+    @State private var scannedMaterial = ""
+    @State private var scannedKilos = 0
+    
     var body: some View {
         VStack {
-            // Botón para abrir el escáner
             Button("Escanear QR") {
                 showScanner = true
             }
             .sheet(isPresented: $showScanner) {
                 QRScannerView(
                     didFindCode: { result in
-                        procesarCodigoQR(result) // Procesa el QR escaneado
+                        procesarCodigoQR(result)
                     },
-                    handleSave: { kilos, material, puntos in
-                        guardarReciclajeEnFirestore(kilos: kilos, material: material, puntos: puntos)
+                    isPresented: $showScanner
+                )
+            }
+            .sheet(isPresented: $showDataView) {
+                ViewDataQR(
+                    qrData: "",
+                    material: scannedMaterial,
+                    kilos: scannedKilos,
+                    onDismiss: {
+                        let puntos = Int(Double(scannedKilos) *
+                            MaterialMultiplicador.obtenerMultiplicador(para: scannedMaterial))
+                        guardarReciclajeEnFirestore(
+                            kilos: scannedKilos,
+                            material: scannedMaterial,
+                            puntos: puntos
+                        )
+                        showDataView = false
                     }
                 )
             }
@@ -32,50 +49,49 @@ struct ScannerParentView: View {
         .navigationTitle("Escanear QR")
         .navigationBarTitleDisplayMode(.inline)
     }
-
-    func procesarCodigoQR(_ codigo: String) {
-        // Supongamos que el código QR contiene datos separados por ":" (material:kilos)
+    
+    private func procesarCodigoQR(_ codigo: String) {
         let componentes = codigo.split(separator: ":")
         guard componentes.count == 2,
               let material = componentes.first,
               let kilosString = componentes.last,
-              let kilos = Int(kilosString) else {
-            print("Código QR inválido")
+              let kilos = Double(kilosString) else {
+            print("QR inválido")
             return
         }
-
-        // Lógica para convertir los datos a puntos
-        let puntos = kilos * 1 // 1 punto por kilo (ajusta según tu lógica)
-
-        // Guardar los datos en Firestore
-        guardarReciclajeEnFirestore(kilos: kilos, material: String(material), puntos: puntos)
+        
+        scannedMaterial = String(material)
+        scannedKilos = Int(kilos)
+        showScanner = false
+        showDataView = true
     }
-
-    func guardarReciclajeEnFirestore(kilos: Int, material: String, puntos: Int) {
+    
+    private func guardarReciclajeEnFirestore(kilos: Int, material: String, puntos: Int) {
         guard let userID = Auth.auth().currentUser?.uid else {
-            print("No se encontró un usuario autenticado.")
+            print("Usuario no autenticado")
             return
         }
-
+        
         let db = Firestore.firestore()
-        let recordID = UUID().uuidString // Genera un ID único para cada registro
+        let recordID = UUID().uuidString
         let reciclajeData: [String: Any] = [
             "kilos": kilos,
             "material": material,
             "puntos": puntos,
-            "timestamp": Timestamp(date: Date()) // Incluye la fecha/hora
+            "timestamp": Timestamp(date: Date())
         ]
-
-        db.collection("Users").document(userID).collection("Reciclaje").document(recordID).setData(reciclajeData) { error in
+        
+        db.collection("Users").document(userID)
+          .collection("Reciclaje").document(recordID)
+          .setData(reciclajeData) { error in
             if let error = error {
-                print("Error al guardar los datos: \(error.localizedDescription)")
+                print("Error: \(error.localizedDescription)")
             } else {
-                print("Datos guardados exitosamente en Firestore.")
+                print("Guardado exitoso")
             }
         }
     }
 }
-
 #Preview {
     ScannerParentView()
 }

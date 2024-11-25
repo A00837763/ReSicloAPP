@@ -8,57 +8,80 @@
 import SwiftUI
 
 struct ViewDataQR: View {
-   let qrData: String
-   let material: String
-   let kilos: Int
-   let onDismiss: () -> Void
-   
-   var body: some View {
-       VStack(alignment: .leading, spacing: 16) {
-           // Header
-           HStack {
-               Image(systemName: "checkmark.circle.fill")
-                   .font(.system(size: 24))
-                   .foregroundColor(Color("ResicloGreen1"))
-               
-               Text("¡Felicitaciones!")
-                   .font(.title3)
-                   .bold()
-                   .foregroundColor(.primary)
-           }
-           
-           // Separador
-           Rectangle()
-               .frame(height: 1)
-               .foregroundColor(Color(.systemGray5))
-           
-           // Detalles
-           VStack(alignment: .leading, spacing: 12) {
-               DetailRow(icon: "leaf.fill", title: "Material", value: material)
-               DetailRow(icon: "scalemass.fill", title: "Kilos", value: "\(kilos)")
-               DetailRow(icon: "star.fill", title: "Puntos", value: "\(kilos * 10)")
-           }
-           
-           Spacer()
-           
-           // Botón
-           Button(action: onDismiss) {
-               HStack {
-                   Text("Obtener puntos")
-                       .fontWeight(.semibold)
-                   Image(systemName: "leaf.circle.fill")
-               }
-               .frame(maxWidth: .infinity)
-               .padding()
-               .background(Color("ResicloGreen1"))
-               .foregroundColor(.white)
-               .clipShape(RoundedRectangle(cornerRadius: 12))
-               .shadow(color: Color("ResicloGreen1").opacity(0.3), radius: 4, x: 0, y: 2)
-           }
-       }
-       .padding()
-       .background(Color(.systemBackground))
-   }
+    let qrData: String
+    let material: String
+    let kilos: Int
+    let onDismiss: () -> Void
+    
+    private var puntos: Int {
+        Int(Double(kilos) * MaterialMultiplicador.obtenerMultiplicador(para: material))
+    }
+    
+    var body: some View {
+        NavigationView {
+            VStack(alignment: .leading, spacing: 16) {
+                // Success Header
+                HStack(spacing: 12) {
+                    Image(systemName: "checkmark.circle.fill")
+                        .font(.system(size: 32))
+                        .foregroundColor(Color("ResicloGreen1"))
+                    
+                    VStack(alignment: .leading) {
+                        Text("¡Felicitaciones!")
+                            .font(.title3)
+                            .bold()
+                        Text("Has reciclado exitosamente")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                .padding(.vertical, 8)
+                
+                Divider()
+                
+                // Details Section
+                VStack(alignment: .leading, spacing: 16) {
+                    DetailRow(icon: "leaf.fill", title: "Material", value: material)
+                    DetailRow(icon: "scalemass.fill", title: "Kilos", value: String(format: "%.1f", Double(kilos)))
+                    DetailRow(icon: "star.fill", title: "Puntos", value: "\(puntos)")
+                        .font(.title3)
+                }
+                .padding(.vertical)
+                
+                // Impact Message
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Tu impacto")
+                        .font(.headline)
+                    Text("Al reciclar \(kilos) kilos de \(material.lowercased()), has contribuido significativamente al medio ambiente.")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.leading)
+                }
+                .padding(.vertical)
+                
+                Spacer()
+                
+                // Action Button
+                Button(action: onDismiss) {
+                    HStack {
+                        Text("Guardar y Obtener Puntos")
+                            .fontWeight(.semibold)
+                        Image(systemName: "leaf.circle.fill")
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color("ResicloGreen1"))
+                    .foregroundColor(.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .shadow(color: Color("ResicloGreen1").opacity(0.3), radius: 4, x: 0, y: 2)
+                }
+            }
+            .padding()
+            .navigationBarItems(trailing: Button("Cerrar") {
+                onDismiss()
+            })
+        }
+    }
 }
 
 struct DetailRow: View {

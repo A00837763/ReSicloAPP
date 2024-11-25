@@ -87,4 +87,31 @@ class MaterialMultiplicador {
         default: return 50.0 // Multiplicador por defecto
         }
     }
+    
+    static func obtenerMateriales() -> Set<String> {
+        return Set([
+            "ABS", "Aceite vegetal usado", "Acero inoxidable", "Acumuladores", "Aluminio",
+            "Antimonio", "Árboles de Navidad", "Balastra", "Bolsas de plástico",
+            "Bolsas HDPE (Plástico NO. 2)", "Bolsas reutilizables (PP)",
+            "BOPP (Polipropileno Biorientado- Plástico No. 5)", "Botella de Grupo Modelo",
+            "Bronce", "Cables", "Caple", "Cápsulas NESCAFÉ® Dolce Gusto®", "Cartón",
+            "Cartuchos de tinta", "CD", "Celulares y accesorios", "Cepillo de dientes",
+            "Charolas de plástico (PET,PP, PE y PS)", "Chatarra", "Cobre", "Dermocosméticos",
+            "Disco de vinilo", "Electrónicos", "Empaques de Alimento para Mascotas",
+            "Envases de Productos de Belleza", "Envases de productos SVR", "Flexible PE/PP",
+            "Flexibles LDPE (Plástico No. 4)", "Focos", "HDPE", "Lata", "LDPE", "Libros",
+            "Línea blanca y refrigeración", "Llantas", "Magnesio", "Medicamentos", "Metal",
+            "Monedas viejas", "Níquel", "Papel", "Papel mixto", "Periódico", "PET",
+            "Pilas alcalinas", "Plástico Duro", "Plástico No. 7", "Playo",
+            "Playo Negro (Plástico #4)", "Plomo", "Policarbonato (PC)", "Poliestireno",
+            "Polipropileno (Plástico #5)", "Productos Natura", "Radiografía", "Revistas",
+            "Ropa", "Ropa para donación", "Sanitarios", "Tapitas", "Tarimas de madera",
+            "Tarjetas de plástico (ej. crédito débito...)", "Tetra Pak",
+            "Tubos de pasta dental", "Unicel", "Vidrio", "Vidrio plano"
+        ])
+    }
+    
+    static func esMaterialValido(_ material: String) -> Bool {
+           return material.contains(material)
+       }
 }

@@ -19,6 +19,7 @@ struct HomeView: View {
     @State private var showScanner = false
     @State private var showHistory = false
     @State private var scannerQRData: QRScannerData?
+    @State private var showDataView = false
     
     var body: some View {
         NavigationView {
@@ -43,20 +44,16 @@ struct HomeView: View {
             .background(Color(.secondarySystemBackground))
             .toolbar {
                 ToolbarItemGroup(placement: .topBarTrailing) {
-                    Button(action: {
-                        showHistory = true
-                    }) {
+                    Button(action: { showHistory = true }) {
                         Image(systemName: "clock")
                             .font(.system(size: 15))
-                            .foregroundColor(Color(.white))
+                            .foregroundColor(.white)
                     }
                     
-                    Button(action: {
-                        showScanner = true
-                    }) {
+                    Button(action: { showScanner = true }) {
                         Image(systemName: "qrcode.viewfinder")
                             .font(.system(size: 15))
-                            .foregroundColor(Color(.white))
+                            .foregroundColor(.white)
                     }
                     
                     Button(action: {
@@ -69,7 +66,7 @@ struct HomeView: View {
                     }) {
                         Image(systemName: "person.circle")
                             .font(.system(size: 20))
-                            .foregroundColor(Color(.white))
+                            .foregroundColor(.white)
                     }
                 }
                 ToolbarItem(placement: .topBarLeading) {
@@ -81,60 +78,58 @@ struct HomeView: View {
             }
             .toolbarBackground(.resicloGreen2, for: .navigationBar)
         }
-        .onAppear(perform: cargarDatosUsuario)
         .sheet(isPresented: $showScanner) {
             QRScannerView(
                 didFindCode: { code in
-                    scannerQRData = QRScannerData(qrData: code, material: "Plástico", kilos: 5)
-                }
+                    if let data = QRScannerData(qrData: code) {
+                        scannerQRData = data
+                        showScanner = false
+                        showDataView = true
+                    }
+                },
+                isPresented: $showScanner
             )
         }
-        .sheet(item: $scannerQRData) { data in
-            ViewDataQR(
-                qrData: data.qrData,
-                material: data.material,
-                kilos: data.kilos,
-                onDismiss: {
-                    guardarReciclaje(kilos: data.kilos, material: data.material)
-                    scannerQRData = nil
-                }
-            )
-        }
+        .sheet(isPresented: $showDataView) {
+                        if let data = scannerQRData {
+                            ViewDataQR(
+                                qrData: "\(data.material):\(data.kilos)",
+                                material: data.material,
+                                kilos: data.kilos,
+                                onDismiss: {
+                                    let puntos = Int(Double(data.kilos) * MaterialMultiplicador.obtenerMultiplicador(para: data.material))
+                                    userPoints += puntos
+                                    guardarReciclaje(kilos: data.kilos, material: data.material)
+                                    showDataView = false
+                                }
+                            )
+                        }
+                    }
         .sheet(isPresented: $showHistory) {
             HistorialReciclajeView()
         }
+        .onAppear(perform: cargarDatosUsuario)
     }
     
-    func cargarDatosUsuario() {
-        guard let uid = Auth.auth().currentUser?.uid else {
-            print("Usuario no autenticado, se mostrará la vista sin datos del usuario.")
-            return
-        }
-
+    private func cargarDatosUsuario() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
         FirestoreManager.shared.obtenerDatosUsuario(uid: uid) { result in
             switch result {
             case .success(let userData):
                 userName = userData["name"] as? String ?? "Usuario"
                 userPoints = userData["puntosTotales"] as? Int ?? 0
             case .failure(let error):
-                print("Error al cargar los datos del usuario: \(error.localizedDescription)")
+                print("Error loading user data: \(error.localizedDescription)")
             }
         }
     }
     
-    func guardarReciclaje(kilos: Int, material: String) {
-        let multiplicador = MaterialMultiplicador.obtenerMultiplicador(para: material)
-        let puntos = Int(Double(kilos) * multiplicador)
+    private func guardarReciclaje(kilos: Int, material: String) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        // Update points locally first
-        userPoints += puntos
+        let puntos = Int(Double(kilos) * MaterialMultiplicador.obtenerMultiplicador(para: material))
         
-        guard let uid = Auth.auth().currentUser?.uid else {
-            print("Usuario no autenticado, no se puede guardar el reciclaje.")
-            return
-        }
-
-        // Then save to Firebase
         FirestoreManager.shared.guardarReciclaje(
             uid: uid,
             kilos: kilos,
@@ -149,3 +144,5 @@ struct HomeView_Previews: PreviewProvider {
         HomeView(selectedTab: .constant(1))
     }
 }
+
+
