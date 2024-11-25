@@ -4,7 +4,7 @@ import FirebaseAuth
 
 struct HomeView: View {
     @Binding var selectedTab: Int
-    @State  var showProfileView = false
+    @State var showProfileView = false
     @ObservedObject var authManager = AuthenticationManager.shared
     
     @State private var position: MapCameraPosition = .region(
@@ -32,9 +32,8 @@ struct HomeView: View {
                         })
                     }
                     
-                    HStack(spacing: 16){
+                    HStack(spacing: 16) {
                         PointsSummaryView(points: userPoints, level: "Eco Guerrero")
-                        
                     }
                     
                     KnowledgeSection()
@@ -59,28 +58,25 @@ struct HomeView: View {
                             .font(.system(size: 15))
                             .foregroundColor(Color(.white))
                     }
+                    
                     Button(action: {
-                        // Obtén la URL de la imagen de Firestore antes de mostrar ProfileView
                         authManager.obtenerImagenDePerfilDesdeFirestore { url in
                             if let url = url {
-                                authManager.profileImageURL = url // Asegúrate de actualizar la URL
+                                authManager.profileImageURL = url
                             }
                             showProfileView = true
                         }
                     }) {
                         Image(systemName: "person.circle")
                             .font(.system(size: 20))
-                            .foregroundColor(Color (.white))
+                            .foregroundColor(Color(.white))
                     }
-                    
                 }
-                ToolbarItem(placement: .topBarLeading){
+                ToolbarItem(placement: .topBarLeading) {
                     Text("Resiclo")
                         .font(.title)
                         .foregroundStyle(.white)
                         .fontWeight(.bold)
-    
-                    
                 }
             }
             .toolbarBackground(.resicloGreen2, for: .navigationBar)
@@ -99,7 +95,7 @@ struct HomeView: View {
                 material: data.material,
                 kilos: data.kilos,
                 onDismiss: {
-                    guardarReciclaje(kilos: data.kilos, material: data.material, puntos: data.kilos * 10)
+                    guardarReciclaje(kilos: data.kilos, material: data.material)
                     scannerQRData = nil
                     cargarDatosUsuario()
                 }
@@ -109,15 +105,13 @@ struct HomeView: View {
             HistorialReciclajeView()
         }
     }
-
+    
     func cargarDatosUsuario() {
-        // Si el usuario no está autenticado, no intentamos cargar datos
         guard let uid = Auth.auth().currentUser?.uid else {
             print("Usuario no autenticado, se mostrará la vista sin datos del usuario.")
             return
         }
 
-        // Si el usuario está autenticado, cargamos los datos
         FirestoreManager.shared.obtenerDatosUsuario(uid: uid) { result in
             switch result {
             case .success(let userData):
@@ -128,8 +122,11 @@ struct HomeView: View {
             }
         }
     }
-
-    func guardarReciclaje(kilos: Int, material: String, puntos: Int) {
+    
+    func guardarReciclaje(kilos: Int, material: String) {
+        let multiplicador = MaterialMultiplicador.obtenerMultiplicador(para: material)
+        let puntos = Int(Double(kilos) * multiplicador)
+        
         guard let uid = Auth.auth().currentUser?.uid else {
             print("Usuario no autenticado, no se puede guardar el reciclaje.")
             return
@@ -148,7 +145,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        // Provide a constant binding for `selectedTab`
         HomeView(selectedTab: .constant(1))
     }
 }
