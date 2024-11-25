@@ -26,7 +26,7 @@ struct MainTabView: View {
             
             QRGeneratorView() // Vista de Generar QR
                 .tabItem {
-                    Label("Historial", systemImage: "qrcode")
+                    Label("CentroQR", systemImage: "qrcode")
                 }
                 .tag(1)
             

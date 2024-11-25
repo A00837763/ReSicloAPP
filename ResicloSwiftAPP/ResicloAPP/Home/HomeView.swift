@@ -33,7 +33,7 @@ struct HomeView: View {
                     }
                     
                     HStack(spacing: 16) {
-                        PointsSummaryView(points: userPoints, level: "Eco Guerrero")
+                        PointsSummaryView(points: userPoints)
                     }
                     
                     KnowledgeSection()
@@ -97,7 +97,6 @@ struct HomeView: View {
                 onDismiss: {
                     guardarReciclaje(kilos: data.kilos, material: data.material)
                     scannerQRData = nil
-                    cargarDatosUsuario()
                 }
             )
         }
@@ -127,19 +126,21 @@ struct HomeView: View {
         let multiplicador = MaterialMultiplicador.obtenerMultiplicador(para: material)
         let puntos = Int(Double(kilos) * multiplicador)
         
+        // Update points locally first
+        userPoints += puntos
+        
         guard let uid = Auth.auth().currentUser?.uid else {
             print("Usuario no autenticado, no se puede guardar el reciclaje.")
             return
         }
 
+        // Then save to Firebase
         FirestoreManager.shared.guardarReciclaje(
             uid: uid,
             kilos: kilos,
             material: material,
             puntos: puntos
         )
-
-        userPoints += puntos
     }
 }
 
