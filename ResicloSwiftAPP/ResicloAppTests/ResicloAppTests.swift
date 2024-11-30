@@ -134,4 +134,21 @@ struct FilteredCentersTests {
         
         #expect(viewModel.filteredMarkers.isEmpty)
     }
+    
+    @Test("WasteLView receives a url for icons")
+    func iconType() throws {
+        let sampleCategory = WasteCategory(
+            categoryId: 1,
+            name: "ABS",
+            desc: "null",
+            process: "null",
+            tips: "null",
+            icon: "https://cdn.ecolana.com.mx/w1st0tisaacwampzqqlpjl2983yb?response-content-disposition=inline%3B%20filename%3D%22ABS.png%22%3B%20filename%2A%3DUTF-8%27%27ABS.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00PGD6ZQ7P9YJF4ZFG%2F20241130%2Funused%2Fs3%2Faws4_request&X-Amz-Date=20241130T010457Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=d2f48642de92249c19fbc3e924906953065f3771aff50cbcce7be3744e56ef95"
+        )
+        
+        let iconURL = try #require(sampleCategory.icon)
+                
+        let url = try #require(URL(string: iconURL))
+        #expect(url.scheme == "https", "Icon URL must be valid and use HTTPS")
+    }
 }
