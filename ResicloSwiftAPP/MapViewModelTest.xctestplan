@@ -1,0 +1,31 @@
+{
+  "configurations" : [
+    {
+      "id" : "19CFEC11-6A8A-43D5-8880-42BC86224EF1",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    },
+    {
+      "id" : "1014946A-D6B8-48D1-9C48-5B892D4C0ED2",
+      "name" : "Configuration 2",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:ResicloApp.xcodeproj",
+        "identifier" : "DE28EF492CFA95EC00D4FF63",
+        "name" : "ResicloAppTests"
+      }
+    }
+  ],
+  "version" : 1
+}
